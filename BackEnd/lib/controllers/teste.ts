@@ -1,6 +1,6 @@
 const { testeServiceFunc } = require('../modules/services/teste-service')
 
-const testeFunc = async (req, res, next) => {
+export const testeFunc = async (req: any, res: any, next: any) => {
   try {
     await testeServiceFunc()
     
@@ -8,10 +8,6 @@ const testeFunc = async (req, res, next) => {
     next()
   } catch(e) {
     console.log(e.message)
-    res.sendStatus(500) && next(error)
+    res.sendStatus(500) && next(e)
   }
-}
-
-module.exports = {
-  testeFunc
 }
