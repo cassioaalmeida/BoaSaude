@@ -1,10 +1,12 @@
 
 import express from "express";
 const server = express()
-import router from "./routes/routes";
+import userRouter from "./routes/user-routes";
+import testRouter from "./routes/test-routes";
 
 server.use(express.json());
     
-server.use('/api', router)
+server.use('/api/user', userRouter)
+server.use('/api/teste', testRouter)
 
 export default server
