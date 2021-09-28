@@ -1,4 +1,4 @@
-const { testeServiceFunc } = require('../modules/services/teste-service')
+import {testeServiceFunc} from '../services/teste-service'
 
 export const testeFunc = async (req: any, res: any, next: any) => {
   try {
