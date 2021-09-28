@@ -1,4 +1,4 @@
-export const testeFunc = async (req: any, res: any, next: any) => {
+export const createUser = async (req: any, res: any, next: any) => {
   try {
     console.log('user')
     res.sendStatus(201)
