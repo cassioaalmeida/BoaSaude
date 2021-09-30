@@ -4,21 +4,21 @@ const validateParams = function (requestParams: any) {
             if (checkParamPresent(Object.keys(req.body), param)) {
                 let reqParam = req.body[param.param_key];
                 if (!checkParamType(reqParam, param)) {
-                    return res.send(400, {
+                    return res.status(400).send({
                         status: 400,
                         result: `${param.param_key} is of type ` +
                         `${typeof reqParam} but should be ${param.type}`
                     });
                 } else {
                     if (!runValidators(reqParam, param)) {
-                        return res.send(400, {
+                        return res.status(400).send({
                             status: 400,
                             result: `Validation failed for ${param.param_key}`
                         });
                     }
                 }
             } else if (param.required){
-                return res.send(400, {
+                return res.status(400).send({
                     status: 400,
                     result: `Missing Parameter ${param.param_key}`
                 });

@@ -1,5 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, ManyToMany} from "typeorm"; 
-import { Claim } from "./Claim";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinTable, ManyToMany, OneToMany} from "typeorm"; 
 import { User } from "./User";
 
 @Entity()
@@ -11,8 +10,6 @@ export class Role {
    @Column()
    description: string;
 
-   @ManyToOne(type => User, user => user.roles) user: User;
-
-   @ManyToMany(type => Claim) @JoinTable()
-   claims: Claim[];
+   @OneToMany(type => User, user => user.role)
+   users: User [];
 }

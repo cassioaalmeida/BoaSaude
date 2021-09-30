@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm"; 
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne} from "typeorm"; 
 import { Role } from "./Role";
 
 @Entity()
@@ -16,5 +16,12 @@ export class User {
    @Column()
    active: boolean;
 
-   @OneToMany(type => Role, role => role.user) roles: Role[];
+   @ManyToOne(type => Role, role => role.users) 
+   role: Role;
+
+   @Column()
+   createdAt: Date;
+
+   @Column()
+   updatedAt: Date;
 }
