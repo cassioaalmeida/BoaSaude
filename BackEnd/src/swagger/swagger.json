@@ -108,7 +108,7 @@
           "Role",
           "email",
           "id",
-          "passwordHash"
+          "password"
         ],
         "type": "object",
         "properties": {
@@ -121,9 +121,9 @@
             "type": "string",
             "example": "cassioaafilho@gmail.com"
           },
-          "passwordHash": {
+          "password": {
             "type": "string",
-            "example": "iahuduhdauiwedqawd"
+            "example": "1234"
           },
           "active": {
             "type": "boolean",

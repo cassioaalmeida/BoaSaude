@@ -1,6 +1,6 @@
 export const createUser = async (req: any, res: any, next: any) => {
   try {
-    console.log('user')
+    console.log(req.body)
     res.sendStatus(201)
     next()
   } catch(e) {

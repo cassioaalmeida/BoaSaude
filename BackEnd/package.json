@@ -7,7 +7,8 @@
    "author": "",
    "license": "ISC",
    "scripts": {
-      "start": "nodemon --watch \"src\" --exec \"ts-node src/app.ts\" -e ts",
+      "start": "nodemon --inspect src/app.ts",
+      "start2": "nodemon --inspect --watch \"src\" --exec \"ts-node src/app.ts\" -e ts",
       "migrate": "ts-node ./node_modules/typeorm/cli.js migration:generate -n",
       "migrate:create": "ts-node ./node_modules/typeorm/cli.js migration:create -n",
       "migrate:run": "ts-node ./node_modules/typeorm/cli.js migration:run",

@@ -8,7 +8,8 @@ router.post('/', validateParams([
     {
         param_key: 'id',
         required: false,
-        type: 'integer'
+        type: 'number',
+        validator_functions: [(param: any) => {return param >= 0}]
     },
     {
         param_key: 'email',
@@ -23,14 +24,10 @@ router.post('/', validateParams([
         validator_functions: [(param: any) => {return param.length <= 50}]
     },
     {
-        param_key: 'role',
-        required: true,
-        type: 'integer'
-    },
-    {
         param_key: 'active',
         required: true,
-        type: 'boolean'
+        type: 'boolean',
+        validator_functions: [(param: any) => {return true}]
     }]), userController.createUser)
 
 export default router;
