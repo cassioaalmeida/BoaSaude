@@ -1,4 +1,5 @@
 {
+   "name": "default",
    "type": "mssql", 
    "host": "boasaude.database.windows.net", 
    "port": 1433, 
