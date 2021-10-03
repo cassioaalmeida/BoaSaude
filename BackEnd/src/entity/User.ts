@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne} from "typeorm"; 
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm"; 
 import { Role } from "./Role";
 import { sha512 } from "../utils/utils";
 import moment from "moment";
@@ -10,7 +10,7 @@ export class User {
     *
     */
    constructor(obj: any) {
-      this.id = obj?.id
+      this.id = obj?.id === 0 ? null : obj?.id
       this.email = obj?.email
       this.passwordHash = sha512(obj?.password)
       this.active = obj?.active

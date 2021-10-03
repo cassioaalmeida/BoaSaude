@@ -1,26 +1,21 @@
 import { Role } from "../entity/Role"
-import { getRoleByName } from "../repository/role-repository"
 import { Connection, Repository } from "typeorm";
 import { Service } from "typedi";
 import { InjectConnection, InjectRepository } from "typeorm-typedi-extensions";
+import { RoleRepository } from "../repository/role-repository";
 
 @Service()
 export class RoleService {
-  @InjectRepository(Role)
-  private repository: Repository<Role>
+  private roleRepository : RoleRepository
   /**
    *
    */
-  constructor(@InjectConnection() connection: Connection) {
-    this.repository = connection.getRepository(Role)
+  constructor(roleRepository : RoleRepository) {
+    this.roleRepository = roleRepository
   }
 
-  public async findByName(description: string) {
-    return this.repository.findOne( {
-      where: {
-        description
-      }
-    })
+  public async getByName(description: string) {
+    return this.roleRepository.getByName(description)
   }
 
 }

@@ -1,36 +1,36 @@
-import { getById, upsert } from "../repository/user-repository"
 import { User } from "../entity/User"
-import { getRoleByName } from "../repository/role-repository"
-import { Connection, Repository } from "typeorm";
 import { RoleService } from "./role-service";
 import { Service } from "typedi";
-import { InjectConnection, InjectRepository } from "typeorm-typedi-extensions";
-
+import { UserRepository } from "../repository/user-repository";
 @Service()
 export class UserService {
-  @InjectRepository(User)
-  private repository: Repository<User>
   private roleService: RoleService
+  private userRepository: UserRepository
   /**
    *
    */
-  constructor(@InjectConnection() connection: Connection,
-              roleService: RoleService) {
-    this.repository = connection.getRepository(User)
+  constructor(roleService: RoleService,
+              userRepository: UserRepository) {
     this.roleService = roleService
+    this.userRepository = userRepository
   }
 
   public async create(reqUser : any) {
     try {
       if (!!reqUser.id) {
-        const userDb = await this.repository.findOne(reqUser.id)
+        const userDb = await this.userRepository.getById(reqUser.id)
         if (!userDb) {
           return {code: 400, message: 'User not found!'}
         }
       }
+
       let user = new User(reqUser)
-      user.role = await this.roleService.findByName(reqUser.role.name)
-      const result = await this.repository.save(user)
+      user.role = await this.roleService.getByName(reqUser.role.name)
+      if (!user.role) {
+        return {code: 400, message: 'Role not found!'}
+      }
+
+      const result = await this.userRepository.upsert(user)
 
 
       return {code: 201, message: result}
