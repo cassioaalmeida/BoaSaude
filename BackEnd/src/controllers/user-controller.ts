@@ -2,6 +2,7 @@ import * as express from 'express';
 import { Service } from 'typedi';
 import { UserService } from '../services/user-service';
 import validateParams from '../middlewares/validate-params'
+import { validateEmail } from '../utils/utils';
 
 @Service()
 export class UserController {
@@ -28,30 +29,30 @@ export class UserController {
   
   private initializeRoutes() {
     this.router.post(this.path, validateParams([
-          {
-              param_key: 'id',
-              required: false,
-              type: 'number',
-              validator_functions: [(param: any) => {return param >= 0}]
-          },
-          {
-              param_key: 'email',
-              required: true,
-              type: 'string',
-              validator_functions: [(param: any) => {return param.length <= 50}]
-          },
-          {
-              param_key: 'password',
-              required: true,
-              type: 'string',
-              validator_functions: [(param: any) => {return param.length <= 50}]
-          },
-          {
-              param_key: 'active',
-              required: true,
-              type: 'boolean',
-              validator_functions: [(param: any) => {return true}]
-          }]), this.createUser);
+      {
+          param_key: 'id',
+          required: false,
+          type: 'number',
+          validator_functions: [(param: any) => {return param >= 0}]
+      },
+      {
+          param_key: 'email',
+          required: true,
+          type: 'string',
+          validator_functions: [validateEmail]
+      },
+      {
+          param_key: 'password',
+          required: true,
+          type: 'string',
+          validator_functions: [(param: any) => {return param.length <= 50}]
+      },
+      {
+          param_key: 'active',
+          required: true,
+          type: 'boolean',
+          validator_functions: [() => {return true}]
+      }]), this.createUser);
   }
 }
 

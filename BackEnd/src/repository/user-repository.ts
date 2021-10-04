@@ -15,19 +15,19 @@ export class UserRepository {
   }
 
   public async upsert(user : User) {
-    try {
-      const result = await this.repository.save(user)
-
-
-      return {code: 201, message: result}
-    } catch(e) {
-      console.log(e.message)
-      return {code:500, message: e.message}
-    }
+    return this.repository.save(user)
   }
 
   public async getById(id: number) {
     return this.repository.findOne(id)
+  }
+
+  public async getByEmail(email: string) {
+    return this.repository.findOne({
+      where: {
+        email
+      }
+    })
   }
 
 }
