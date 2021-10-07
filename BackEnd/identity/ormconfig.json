@@ -9,13 +9,13 @@
    "synchronize": false,
    "logging": false,
    "entities": [
-      "src/entity/**/*.ts"
+      "./entity/**/*{.ts,.js}"
    ],
    "migrations": [
-      "src/migration/**/*.ts"
+      "./migration/**/*{.ts,.js}"
    ],
    "subscribers": [
-      "src/subscriber/**/*.ts"
+      "./subscriber/**/*{.ts,.js}"
    ],
    "cli": {
       "entitiesDir": "src/entity",

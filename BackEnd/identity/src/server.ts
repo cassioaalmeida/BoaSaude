@@ -8,10 +8,11 @@ import Container from 'typedi';
 import { UserController } from './controllers/user-controller';
 import { LoginController } from './controllers/login-controller';
 import { createConnection, useContainer } from 'typeorm';
-const swaggerDocument = require('./swagger/swagger.json');
+import swaggerDocument from './swagger/swagger.json'
+import {conf} from './config/ormconfig'
 const server = express()
 useContainer(Container);
-createConnection().catch(error => {
+createConnection(conf).catch(error => {
     console.error(`Couldn't connect to the database!`);
     console.error(error);
   })
