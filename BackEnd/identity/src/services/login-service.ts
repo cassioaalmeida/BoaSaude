@@ -24,6 +24,7 @@ export class LoginService {
     if (!login || login.passwordHash !== sha512(password)){
       return {code:401, message: 'Invalid login/password'}
     }
+    
     const now = new Date()
     const created = moment(now).tz('America/Sao_Paulo').format('YYYY-MM-DDTHH:mm:ss');
     const expires = moment(now).add(moment.duration(1, 'hours')).tz('America/Sao_Paulo').format('YYYY-MM-DDTHH:mm:ss');
@@ -43,7 +44,7 @@ export class LoginService {
     );
     return {
         code:200,
-        result: {
+        message: {
             authenticated: true,
             created: created,
             expiration: expires,
