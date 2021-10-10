@@ -26,7 +26,10 @@ export class UserRepository {
     return this.repository.findOne({
       where: {
         email
-      }
+      },
+      relations: [
+        'role'
+      ]
     })
   }
 
