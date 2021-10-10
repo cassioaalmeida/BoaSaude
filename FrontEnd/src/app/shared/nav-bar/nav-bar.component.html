@@ -1,0 +1,18 @@
+<div class="menu">
+<div class="nav-background">
+  <div class="nav-container">
+      <img (click)="home()" src="../../assets/icons/logo.jpeg" alt="Logo PCH" class="nav-logo no-select">
+      <p (click)="home()" class="system-title pch-title no-select">Produtos com História</p>
+      <section class="nav-icons">
+        <app-login *ngIf="!isLogged()" class="login-icon no-select"></app-login>
+        <p *ngIf="isLogged()">{{username}}</p>
+        <span *ngIf="isLogged()" id="logout" (click)="logout()" class="material-icons login-icon no-select">
+          clear
+        </span>
+        <span id="menu" (click)="toggleMenu()" class="material-icons menu-icon no-select">
+          menu
+        </span>
+      </section>
+  </div>
+</div>
+</div>

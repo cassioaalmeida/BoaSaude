@@ -1,0 +1,36 @@
+<mat-drawer-container hasBackdrop="true" (backdropClick)="toggleMenu(!drawer.opened)">
+    <mat-drawer #drawer mode="over" position="end" class="menu-container no-select">
+
+        <span class="material-icons menu-close" id="close-menu" (click)="drawer.toggle(); toggleMenu(drawer.opened);">close</span>
+
+        <div class="itens-container" *ngFor="let cabecalho of menu">
+
+            <mat-expansion-panel id="{{ cabecalho.name }}" class="menu-panel" *ngIf="cabecalho.expandable" [expanded]="false" hideToggle="false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="menu-header">
+                        <span *ngIf="cabecalho.icon_Class" class="material-icons menu-icon">{{ cabecalho.icon_Class }}</span>
+                        <p class="h4-headline menu-label">{{ translateName(cabecalho.name) }}</p>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <a *ngFor="let item of cabecalho.menus" id="{{ item.name }}" class="display-block h4-headline menu-item" (click)="goToRoute(item.route); drawer.toggle(); toggleMenu(drawer.opened);">
+                    <span *ngIf="item.icon_Class" class="material-icons menu-icon">{{ item.icon_Class }}</span>
+                    <p class="h4-deadline menu-label">{{ 'menu.' + item.name | translate }}</p>
+                </a>
+            </mat-expansion-panel>
+
+            <mat-panel-title class="menu-not-expandable" *ngIf="!cabecalho.expandable" id="{{cabecalho.name}}" (click)="cabecalho.level == 99 ? logout() : goToRoute(cabecalho.route);  drawer.toggle(); toggleMenu(drawer.opened);">
+                <span *ngIf="cabecalho.icon_Class" class="material-icons menu-icon">{{ cabecalho.icon_Class }}</span>
+                <p class="h4-headline menu-label">{{ 'menu.' + cabecalho.name | translate }}</p>
+            </mat-panel-title>
+        </div>
+    </mat-drawer>
+
+    <mat-drawer-content>
+        <app-nav-bar (menu)="drawer.toggle(); toggleMenu(drawer.opened);"></app-nav-bar>
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+        <!-- <app-footer></app-footer> -->
+    </mat-drawer-content>
+
+</mat-drawer-container>

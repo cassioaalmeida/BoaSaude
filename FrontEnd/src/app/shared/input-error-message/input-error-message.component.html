@@ -1,0 +1,7 @@
+<mat-error *ngIf="control.invalid && !textArea" class="error-text">
+    {{this.getErrorMessage()}}
+</mat-error>
+
+<mat-error *ngIf="control.invalid && textArea" class="error-text--area">
+    {{this.getErrorMessage()}}
+</mat-error>

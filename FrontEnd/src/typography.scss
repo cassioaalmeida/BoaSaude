@@ -1,0 +1,147 @@
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url("./assets/fonts/Roboto-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Roboto-Light';
+    src: url("./assets/fonts/Roboto-Light.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: url("./assets/fonts/Roboto-Medium.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url("./assets/fonts/Roboto-Bold.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Roboto-Black';
+    src: url("./assets/fonts/Roboto-Black.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Roboto-Thin';
+    src: url("./assets/fonts/Roboto-Thin.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Roboto-Italic';
+    src: url("./assets/fonts/Roboto-Italic.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Roboto-LightItalic';
+    src: url("./assets/fonts/Roboto-LightItalic.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Roboto-MediumItalic';
+    src: url("./assets/fonts/Roboto-MediumItalic.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Roboto-BoldItalic';
+    src: url("./assets/fonts/Roboto-BoldItalic.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Roboto-BlackItalic';
+    src: url("./assets/fonts/Roboto-BlackItalic.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Roboto-ThinItalic';
+    src: url("./assets/fonts/Roboto-ThinItalic.ttf") format("truetype");
+}
+
+$_32px: 2rem;
+$_24px: 1.5rem;
+$_18px: 1.125rem;
+$_16px: 1rem;
+$_14px: 0.875rem;
+$_12px: 0.75rem;
+$_10px: 0.625rem;
+
+.font-underline {
+    text-decoration: underline;
+}
+
+.system-title { // 1
+    font-size: $_24px;
+    font-family: 'Roboto-Medium';
+}
+
+.h2-headline { // 2
+    font-size: $_32px;
+    font-family: 'Roboto-Regular';
+    line-height: $_32px;
+    &--light { // 3
+        font-size: $_32px;
+        font-family: 'Roboto-Light';
+    }
+    &--bold{
+        font-size: $_32px;
+        font-family: 'Roboto-Bold';
+    }
+}
+
+.h3-headline { // 4
+    font-size: $_24px;
+    font-family: 'Roboto-Regular';
+    &--bold{
+        font-size: $_24px;
+        font-family: 'Roboto-Bold';
+    }
+}
+
+.h4-headline { // 5
+    font-size: $_18px;
+    font-family: 'Roboto-Regular';
+    &--bold {
+        font-size: $_18px;
+        font-family: 'Roboto-Bold';
+    }
+}
+
+.text-default { // 6
+    font-size: $_18px;
+    font-family: 'Roboto-Regular';
+    &--bold { // 7
+        font-size: $_18px;
+        text-transform: uppercase;
+        font-family: 'Roboto-Bold';
+    }
+}
+
+.table-text-column { // 8
+    font-size: $_16px;
+    font-family: 'Roboto-Medium';
+    &--bold { // 7
+        font-size: $_18px;
+        font-family: 'Roboto-Bold';
+    }
+}
+
+.text-small { // 9 
+    font-size: $_12px;
+    font-family: 'Roboto-Regular';
+}
+
+.text-overline { // 10
+    font-size: $_10px;
+    font-family: 'Roboto-Medium';
+    text-transform: uppercase;
+}
+
+.link { // 11
+    font-size: $_14px; 
+    font-family: 'Roboto-Regular';
+    cursor: pointer;
+}
+
+.input-text { // 12
+    font-size: $_16px;
+    font-family: 'Roboto-Regular';
+}
+
+.text-galery { // 14
+    font-size: $_12px;
+    font-family: 'Roboto-Regular';
+    &--bold { // 13
+        font-size: $_14px;
+        font-family: 'Roboto-Bold';
+    }
+}

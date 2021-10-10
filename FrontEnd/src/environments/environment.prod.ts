@@ -1,23 +1,6 @@
-import config from '../../auth_config.json';
-
-const { domain, clientId, audience, apiUri, errorPath } = config as {
-  domain: string;
-  clientId: string;
-  audience?: string;
-  apiUri: string;
-  errorPath: string;
-};
-
 export const environment = {
   production: true,
-  auth: {
-    domain,
-    clientId,
-    ...(audience && audience !== "YOUR_API_IDENTIFIER" ? { audience } : null),
-    redirectUri: window.location.origin,
-    errorPath,
-  },
-  httpInterceptor: {
-    allowedList: [`${apiUri}/*`],
-  },
+  urlApi: 'http://34.70.158.218:8080/api',
+  urlCloudApi: 'https://us-central1-fit-moin.cloudfunctions.net',
+  urlAppEngine: 'https://fit-moin.uc.r.appspot.com'
 };

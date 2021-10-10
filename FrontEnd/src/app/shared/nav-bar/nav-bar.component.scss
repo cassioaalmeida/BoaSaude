@@ -1,0 +1,66 @@
+@import 'src/colors.scss';
+@import 'src/styles.scss';
+
+p {
+    margin: 0px;
+}
+
+.nav-background {
+    display: flex;
+    justify-content: center;
+    background-color: $gray-dark;
+    border-bottom: 5px solid $green-light;
+}
+
+.menu{
+  position: fixed;
+    z-index: 9999;
+    width: 100%;
+    top: 0;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    height: 74px;
+    width: $navcontainer;
+    padding: 0px 32px 0px 32px;
+    background-color: $gray-dark;
+    color: $white;
+}
+
+.nav-logo {
+    max-height: 50px;
+    cursor: pointer;
+}
+
+.nav-icons {
+    margin: 0px 0px 0px auto;
+    display: flex;
+}
+
+.pch-title {
+    margin-left: 24px;
+    cursor: pointer;
+}
+
+.login-icon {
+    align-self: center;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: 16px;
+}
+
+.menu-icon {
+    margin-left: auto;
+    margin-right: 0px;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.notification-icon {
+    margin-left: auto;
+    margin-right: 0px;
+    font-size: 32px;
+    cursor: pointer;
+}

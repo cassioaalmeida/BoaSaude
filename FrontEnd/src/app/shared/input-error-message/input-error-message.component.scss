@@ -1,0 +1,12 @@
+.error-text {
+    position: absolute;
+    left: 0px;
+    top: 35px;
+    color: #f44336;
+    min-width: 220px;
+    &--area {
+        top: 50px;
+        left: 0px;
+        color: #f44336;
+    }
+}
