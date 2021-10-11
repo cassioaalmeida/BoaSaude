@@ -2,10 +2,10 @@
     "enum": { 
         "deliveryTypes": {
             "companyDelivery": "Entregue pela empresa",
-            "collectedByPCH": "Coleta pelo PCH"
+            "collectedByAPP": "Coleta pelo APP"
         },
         "companyTypes": {
-            "PCH": "PCH",
+            "APP": "APP",
             "Sinctronics": "Sinctronics",
             "AFabrica": "aFábrica",
             "Supplier": "Fornecedor",
@@ -208,7 +208,7 @@
     "menu": {
         "access": "Login",
         "signUp": "Cadastre-se",
-        "what-is-pch": "O que é PCH",
+        "what-is-app": "O que é APP",
         "how-it-works": "Como Funciona",
         "indicators": "Indicadores",
         "simulator": "Simulador",

@@ -24,7 +24,6 @@ import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@ang
 import { MatMenuModule } from '@angular/material/menu'; 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { TextMaskModule } from 'angular2-text-mask';
-import { SharedModule } from './shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -38,6 +37,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop'
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SideMenuComponent } from './shared/side-menu/side-menu.component';
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
+import { LoginComponent } from './shared/login/login.component';
+import { InputErrorMessageComponent } from './shared/input-error-message/input-error-message.component';
 
 registerLocaleData(ptBr);
 
@@ -50,7 +51,9 @@ export function createTranslateLoader(http: HttpClient) {
     AppComponent,
     HomeComponent,
     SideMenuComponent,
-    NavBarComponent
+    NavBarComponent,
+    LoginComponent,
+    InputErrorMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -76,8 +79,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,  
-    MatMenuModule,    
-    SharedModule,
+    MatMenuModule,   
     MatSlideToggleModule,
     MatDialogModule,
     NgxDatatableModule,

@@ -1,0 +1,22 @@
+@import 'src/colors.scss';
+
+.login-container {
+    padding: 32px;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    background-color: $gray-dark;
+    color: $white;
+}
+
+.login-title {
+    margin: 32px 0px 64px 0px; 
+}
+
+.login-sub-title {
+    margin: 32px 0px 32px 0px;
+    &--text {
+        margin: 5px;
+        cursor: pointer;
+    }
+}
