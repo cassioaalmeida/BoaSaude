@@ -9,6 +9,8 @@ import { createConnection, useContainer } from 'typeorm';
 import swaggerDocument from './swagger/swagger.json'
 import {conf} from './config/ormconfig'
 import { MenuController } from './controllers/menu-controller';
+import * as bodyParser from "body-parser";
+import * as helmet from "helmet";
 const server = express()
 useContainer(Container);
 createConnection(conf).catch(error => {
