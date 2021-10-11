@@ -1,9 +1,9 @@
 import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm"; 
 import 'moment-timezone';
-import { UserType } from "../enum/UserType";
+import { PartnerType } from "../enum/PartnerType";
 
 @Entity()
-export class User {
+export class Partner {
    @PrimaryGeneratedColumn()
    id: number;
 
@@ -24,15 +24,15 @@ export class User {
    
    @Column()
    state: string;
+
+   @Column()
+   longitude: string;
+
+   @Column()
+   latidute: string;
    
    @Column()
-   age: number;
-   
-   @Column()
-   type: UserType;
-   
-   @Column()
-   userLoginId: number;
+   type: PartnerType;
 
    @Column()
    active: boolean;

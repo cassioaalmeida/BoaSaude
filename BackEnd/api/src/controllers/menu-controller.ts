@@ -1,4 +1,5 @@
 import * as express from 'express';
+import getUser from '../middlewares/getUser';
 import { Service } from 'typedi';
 import { MenuService } from '../services/menu-service';
 
@@ -14,12 +15,12 @@ export class MenuController {
   }
   
   private initializeRoutes() {
-    this.router.get(this.path, this.getMenu);
+    this.router.get(this.path, getUser(), this.getMenu);
   }
 
   public getMenu = async (req: express.Request, res: express.Response, next: any) => {
     try {
-      const result = await this.menuService.getMenu()
+      const result = await this.menuService.getMenu(res.locals.user)
   
       res.status(result.code).send(result.message)
       next()

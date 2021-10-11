@@ -11,11 +11,20 @@ export const checkRole = (roles: Array<string>) => {
 
     //Get user role from the database
     const userRepository = getRepository(User);
+
     let user: User;
     try {
-      user = await userRepository.findOneOrFail(id);//TODO
+      user = await userRepository.findOneOrFail(id, {
+        where: {
+          active: true
+        }
+      })
+      sessionStorage.setItem('userId', user.id.toString());
+      sessionStorage.setItem('userName', user.name.toString());
+      sessionStorage.setItem('userEmail', user.email.toString());
+      sessionStorage.setItem('userLoginId', user.userLoginId.toString());
     } catch (id) {
-      res.status(401).send();
+      return res.status(401).send();
     }
 
     const role = res.locals.jwtPayload.role;
