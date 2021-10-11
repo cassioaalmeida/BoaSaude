@@ -1,19 +1,17 @@
 <form [formGroup]="formLogin" class="login-container">
-        
   <p class="login-title h2-headline--light">Acesse a sua conta</p>
-      
-  <mat-form-field appearance="fill" class="input-text">
-      <mat-label>Email*</mat-label>
-      <input matInput type="email" id="email" formControlName="email">
-      <app-input-error-message [control]="formLogin.get('email')"></app-input-error-message>
-  </mat-form-field>
-                 
-  <mat-form-field appearance="fill" class="input-text">
-      <mat-label>Senha*</mat-label>
-      <input matInput type="password" id="password" formControlName="password">
-      <app-input-error-message [control]="formLogin.get('password')"></app-input-error-message>
-  </mat-form-field>
+        
+    <mat-form-field appearance="fill" class="input-text">
+        <mat-label>Email*</mat-label>
+        <input matInput type="email" id="email" formControlName="email">
+        <app-input-error-message [control]="formLogin.get('email')"></app-input-error-message>
+    </mat-form-field>
+                  
+    <mat-form-field appearance="fill" class="input-text">
+        <mat-label>Senha*</mat-label>
+        <input matInput type="password" id="password" formControlName="password">
+        <app-input-error-message [control]="formLogin.get('password')"></app-input-error-message>
+    </mat-form-field>
 
-  <button mat-raised-button class="app-button--primary text-default--bold top-32" id="login" (click)="login()">Entrar</button>
-      
+    <button mat-raised-button class="app-button--primary text-default--bold top-32" id="login" (click)="login()">Entrar</button>
 </form>

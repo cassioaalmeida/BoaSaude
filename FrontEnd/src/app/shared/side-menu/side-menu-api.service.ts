@@ -12,6 +12,6 @@ export class SideMenuApiService {
   ) { }
 
   getMenuItems(){
-    return this.http.get(`${environment.urlCloudApi}/GetMenu`);
+    return this.http.get(`${environment.urlApi}/Menu`);
   }
 }

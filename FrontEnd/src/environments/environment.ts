@@ -4,10 +4,8 @@
 
 export const environment = {
   production: false,
-  urlApi: 'http://104.154.167.42:8080/api',
-  urlCloudApi: 'https://us-central1-fit-moin-dev.cloudfunctions.net',
-  urlAppEngine: 'https://fit-moin-dev.uc.r.appspot.com',
-  urlCloudApiTest: 'http://localhost:8080'
+  urlApi: 'http://localhost:5000/api',
+  urlIdentityApi: 'https://boa-saude-identity.azurewebsites.net/api'
 };
 
 /*

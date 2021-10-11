@@ -1,0 +1,25 @@
+{
+   "name": "default",
+   "type": "mssql", 
+   "host": "boasaude.database.windows.net", 
+   "port": 1433, 
+   "username": "cassio", 
+   "password": "@Zedumato12", 
+   "database": "boasaude",
+   "synchronize": false,
+   "logging": false,
+   "entities": [
+      "./entity/**/*{.ts,.js}"
+   ],
+   "migrations": [
+      "./migration/**/*{.ts,.js}"
+   ],
+   "subscribers": [
+      "./subscriber/**/*{.ts,.js}"
+   ],
+   "cli": {
+      "entitiesDir": "src/entity",
+      "migrationsDir": "src/migration",
+      "subscribersDir": "src/subscriber"
+   }
+}

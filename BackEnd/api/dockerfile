@@ -1,0 +1,29 @@
+# STAGE 1
+FROM node:14-alpine
+WORKDIR /usr
+COPY package.json ./
+COPY tsconfig.json ./
+COPY ormconfig.json ./
+COPY src ./src
+RUN ls -a
+RUN npm config set unsafe-perm true
+RUN npm install -g typescript
+RUN npm install -g ts-node
+RUN npm install
+RUN npm run build
+
+# STAGE 2
+FROM node:14-alpine
+WORKDIR /usr
+COPY package.json ./
+COPY tsconfig.json ./
+COPY ormconfig.json ./
+RUN npm install --only=production
+COPY --from=0 /usr/dist .
+RUN npm install pm2 -g
+RUN npm install -g typescript
+RUN npm install -g ts-node
+RUN npm run migrate:run
+EXPOSE 3000
+
+CMD ["pm2-runtime","app.js"]
