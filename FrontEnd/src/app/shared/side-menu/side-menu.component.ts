@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from 'src/app/_core/authentication.service';
 import { UtilsService } from 'src/app/_core/Utils/utils.service';
+import { LoginService } from '../login/login.service';
 import { SideMenuService } from './side-menu.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class SideMenuComponent implements OnInit {
     private sideMenuService: SideMenuService,
     private translateService: TranslateService,
     private utilsService: UtilsService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private loginService: LoginService
   ) { }
 
   ngOnInit(): void {
@@ -26,9 +28,9 @@ export class SideMenuComponent implements OnInit {
   }
   
   events(){
-    // this.loginService.loginEvent.subscribe(() => {
-    //   this.loadMenu();
-    // });
+    this.loginService.loginEvent.subscribe(() => {
+      this.loadMenu();
+    });
 
     this.authenticationService.logoutEvent.subscribe(() => {
       this.loadMenu();

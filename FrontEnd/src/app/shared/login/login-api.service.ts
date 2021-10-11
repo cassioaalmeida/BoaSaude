@@ -13,9 +13,9 @@ export class LoginApiService {
 
   login(email: string, password: string, refreshToken?: string) {
     const httpHeaders = new HttpHeaders({ grant_type: 'password' });
-    return this.http.post(`${environment.urlApi}/login`, {
-      Email: email,
-      Password: password
+    return this.http.post(`${environment.urlIdentityApi}/login`, {
+      email,
+      password
     }, { headers: httpHeaders });
   }
 
