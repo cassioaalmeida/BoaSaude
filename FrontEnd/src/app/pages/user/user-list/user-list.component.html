@@ -1,0 +1,33 @@
+
+<div class="header-container">
+    <p class="h3-headline label" label>Usuários</p>
+    <button mat-raised-button class="button app-button--primary" id="new" (click)="newUser()">Novo</button>
+</div>
+
+<ngx-datatable class="material" [columnMode]="'flex'" [headerHeight]="50" [footerHeight]="50" rowHeight="auto"
+    [rows]="pageable.elements" [externalPaging]="true" [count]="pageable.totalCount" [offset]="pageable.currentPage"
+    [limit]="pageable.pageSize" (page)="setPage($event)">
+    <ngx-datatable-column name="Nome" prop="name" [flexGrow]="1">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+            {{ value }}
+        </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Email" prop="email" [flexGrow]="1">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            {{ value }}
+        </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Ativo" prop="active" [flexGrow]="1">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            {{ value ? "Sim" : "Não" }}
+        </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="" prop="id" [flexGrow]="1">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <button mat-raised-button class="app-button--secondary" id="details" (click)="openUser(value)">
+                <span class="label-long">Detalhes</span>
+                <span class="material-icons label-short">info</span>
+            </button>
+        </ng-template>
+    </ngx-datatable-column>
+</ngx-datatable>

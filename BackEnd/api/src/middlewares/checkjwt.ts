@@ -5,12 +5,12 @@ import config from "../config/config";
 
 export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
   //Get the jwt token from the head
-  const token = <string>req.headers["Authorization"];
+  const token = <string>req.headers["authorization"];
   let jwtPayload;
   
   //Try to validate the token and get data
   try {
-    jwtPayload = <any>jwt.verify(token, config.jwtSecret);
+    jwtPayload = <any>jwt.verify(token.substring(7), "TODO_SECRET");
     res.locals.jwtPayload = jwtPayload;
   } catch (error) {
     //If token is not valid, respond with 401 (unauthorized)

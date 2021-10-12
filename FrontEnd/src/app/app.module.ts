@@ -39,6 +39,8 @@ import { SideMenuComponent } from './shared/side-menu/side-menu.component';
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 import { LoginComponent } from './shared/login/login.component';
 import { InputErrorMessageComponent } from './shared/input-error-message/input-error-message.component';
+import { UserComponent } from './pages/user/user/user.component';
+import { UserListComponent } from './pages/user/user-list/user-list.component';
 
 registerLocaleData(ptBr);
 
@@ -53,7 +55,9 @@ export function createTranslateLoader(http: HttpClient) {
     SideMenuComponent,
     NavBarComponent,
     LoginComponent,
-    InputErrorMessageComponent
+    InputErrorMessageComponent,
+    UserComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

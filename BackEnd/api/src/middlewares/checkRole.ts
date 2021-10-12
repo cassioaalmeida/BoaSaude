@@ -7,22 +7,20 @@ import { User } from "../entity/User";
 export const checkRole = (roles: Array<string>) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     //Get the user ID from previous midleware
-    const id = res.locals.jwtPayload.userId;
+    const id = res.locals.jwtPayload.id;
 
     //Get user role from the database
     const userRepository = getRepository(User);
 
     let user: User;
     try {
-      user = await userRepository.findOneOrFail(id, {
+      user = await userRepository.findOneOrFail({
         where: {
+          userLoginId: id,
           active: true
         }
       })
-      sessionStorage.setItem('userId', user.id.toString());
-      sessionStorage.setItem('userName', user.name.toString());
-      sessionStorage.setItem('userEmail', user.email.toString());
-      sessionStorage.setItem('userLoginId', user.userLoginId.toString());
+      res.locals.user = user;
     } catch (id) {
       return res.status(401).send();
     }

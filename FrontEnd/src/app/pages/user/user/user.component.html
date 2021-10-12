@@ -1,0 +1,27 @@
+<div class="user-container">
+    <form [formGroup]="formUser">
+
+        <p class="h3-headline label">Cadastro de Usuário</p>
+    
+        <input matInput type="number" id="id" formControlName="id" hidden>
+      
+        <mat-form-field appearance="fill" class="display-block">
+            <mat-label>Nome*</mat-label>
+            <input matInput type="text" id="name" formControlName="name">
+            <app-input-error-message [control]="formUser.get('name')"></app-input-error-message>
+        </mat-form-field>
+      
+        <mat-form-field appearance="fill" class="display-block">
+            <mat-label>Email*</mat-label>
+            <input matInput type="email" id="email" formControlName="email">
+            <app-input-error-message [control]="formUser.get('email')"></app-input-error-message>
+        </mat-form-field>
+    
+        <mat-slide-toggle id="enable" class="display-block active-switch" formControlName="enable">Ativo</mat-slide-toggle>
+        
+        <button mat-raised-button class="button moin-button--basic" id="cancel" (click)="cancel()">Cancelar</button>
+        <button mat-raised-button class="button moin-button--primary" id="upsert" (click)="upsert()">Salvar</button>
+      
+      
+      </form>
+</div>

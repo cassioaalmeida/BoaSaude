@@ -1,0 +1,14 @@
+.header-container {
+  display: flex;
+  flex-direction: row;
+  padding: 32px;
+}
+
+.label {
+  margin: auto 0px;
+}
+
+.button {
+  margin: 0px 0px 0px auto;
+  height: fit-content;
+}

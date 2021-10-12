@@ -30,7 +30,7 @@ p {
   background-color: $white;
   margin: 0px auto 0px auto !important;
   height: fit-content;
-  min-height: calc(100vh - 356px);
+  min-height: calc(100vh - 300px);
   @media screen and (min-width: $containerSize) {
     width: $containerSize !important;
   }

@@ -16,7 +16,7 @@ const getUser = function () {
     }
 
     let jwtPayload;
-    jwtPayload = <any>jwt.verify(token.substring(7), config.jwtSecret);
+    jwtPayload = <any>jwt.verify(token.substring(7), "TODO_SECRET");
 
     //Get user role from the database
     const userRepository = getRepository(User);

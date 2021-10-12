@@ -1,0 +1,18 @@
+.user-container {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+}
+
+.label {
+  margin-bottom: 32px;
+}
+
+.button {
+  height: fit-content;
+  margin: 32px 16px 0px 0px;
+}
+
+.active-switch {
+  margin-top: 32px;
+}
