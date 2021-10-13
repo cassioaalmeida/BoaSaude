@@ -13,6 +13,14 @@ export class UserService {
     this.userRepository = userRepository
   }
 
+  public async getUser(id:number) {
+    try {
+      return await this.userRepository.getById(id)
+    } catch(e) {
+      throw e
+    }
+  }
+
   public async getAll(pageSize:number, pageNumber:number) {
     try {
       return await this.userRepository.getAll(pageSize, pageNumber)
@@ -20,9 +28,18 @@ export class UserService {
       throw e
     }
   }
+
   public async getAllCount() {
     try {
       return await this.userRepository.getAllCount()
+    } catch(e) {
+      throw e
+    }
+  }
+
+  public async upsert(user:User) {
+    try {
+      return await this.userRepository.upsert(user)
     } catch(e) {
       throw e
     }

@@ -1,27 +1,77 @@
 <div class="user-container">
-    <form [formGroup]="formUser">
+  <p class="h3-headline label">Cadastro de Usuário</p>
+    <form [formGroup]="formUser" class="user-form">
 
-        <p class="h3-headline label">Cadastro de Usuário</p>
     
         <input matInput type="number" id="id" formControlName="id" hidden>
       
         <mat-form-field appearance="fill" class="display-block">
-            <mat-label>Nome*</mat-label>
+            <mat-label>Nome</mat-label>
             <input matInput type="text" id="name" formControlName="name">
             <app-input-error-message [control]="formUser.get('name')"></app-input-error-message>
         </mat-form-field>
       
         <mat-form-field appearance="fill" class="display-block">
-            <mat-label>Email*</mat-label>
+            <mat-label>Email</mat-label>
             <input matInput type="email" id="email" formControlName="email">
             <app-input-error-message [control]="formUser.get('email')"></app-input-error-message>
+        </mat-form-field>
+      
+        <mat-form-field appearance="fill" class="display-block">
+            <mat-label>Telefone</mat-label>
+            <input matInput [textMask]="{mask: maskPhone,  guide: false}" type="text" id="phone" formControlName="phone">
+            <app-input-error-message [control]="formUser.get('phone')"></app-input-error-message>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="display-block">
+          <mat-label>CEP</mat-label>
+          <input matInput [textMask]="{mask: maskCep}" type="text" id="cep" formControlName="cep" (change)="searchCEPAdress()">
+          <app-input-error-message [control]="formUser.get('cep')"></app-input-error-message>
+      </mat-form-field>
+      
+        <mat-form-field appearance="fill" class="display-block">
+            <mat-label>Endereço</mat-label>
+            <input matInput type="text" id="street" formControlName="street">
+            <app-input-error-message [control]="formUser.get('street')"></app-input-error-message>
+        </mat-form-field>
+      
+        <mat-form-field appearance="fill" class="display-block">
+            <mat-label>Número</mat-label>
+            <input matInput type="text" id="number" formControlName="number">
+            <app-input-error-message [control]="formUser.get('number')"></app-input-error-message>
+        </mat-form-field>
+      
+        <mat-form-field appearance="fill" class="display-block">
+            <mat-label>Complemento</mat-label>
+            <input matInput type="text" id="complement" formControlName="complement">
+            <app-input-error-message [control]="formUser.get('complement')"></app-input-error-message>
+        </mat-form-field>
+      
+        <mat-form-field appearance="fill" class="display-block">
+            <mat-label>Cidade</mat-label>
+            <input matInput type="text" id="city" formControlName="city">
+            <app-input-error-message [control]="formUser.get('city')"></app-input-error-message>
+        </mat-form-field>
+      
+        <mat-form-field appearance="fill" class="display-block">
+            <mat-label>Estado</mat-label>
+            <input matInput type="text" id="state" formControlName="state">
+            <app-input-error-message [control]="formUser.get('state')"></app-input-error-message>
+        </mat-form-field>
+      
+        <mat-form-field appearance="fill" class="display-block">
+            <mat-label>Idade</mat-label>
+            <input matInput type="number" id="age" formControlName="age">
+            <app-input-error-message [control]="formUser.get('age')"></app-input-error-message>
         </mat-form-field>
     
         <mat-slide-toggle id="enable" class="display-block active-switch" formControlName="enable">Ativo</mat-slide-toggle>
         
-        <button mat-raised-button class="button moin-button--basic" id="cancel" (click)="cancel()">Cancelar</button>
-        <button mat-raised-button class="button moin-button--primary" id="upsert" (click)="upsert()">Salvar</button>
-      
       
       </form>
+      <div class="button-div">
+        <button mat-raised-button class="button app-button--basic" id="cancel" (click)="cancel()">Cancelar</button>
+        <button mat-raised-button class="button app-button--primary" id="upsert" (click)="upsert()">Salvar</button>  
+      </div>      
+      
 </div>

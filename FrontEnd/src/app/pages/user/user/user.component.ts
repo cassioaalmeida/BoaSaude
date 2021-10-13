@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { CorreioService } from 'src/app/_core/Utils/correios.service';
 import { CustomValidatorsService } from 'src/app/_core/Utils/custom-validators.service';
 import { ValidateService } from 'src/app/_core/Utils/validate.service';
 import { UserService } from '../shared/user.service';
@@ -12,14 +13,23 @@ import { UserService } from '../shared/user.service';
 })
 export class UserComponent implements OnInit {
 
+  maskCep = [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
+  maskPhone = ['(', /\d/, /\d/, ')', ' ' , /\d/, /\d/, /\d/, /\d/, /\d/,'-', /\d/, /\d/, /\d/, /\d/];
   userId: number;
   companyUrlId: number;
 
   formUser = new FormGroup({
     name: new FormControl(null, [Validators.required, this.customValidators.noWhitespaceValidator(), Validators.maxLength(200)]),
     email: new FormControl(null, [Validators.required, this.customValidators.noWhitespaceValidator(), Validators.maxLength(200), this.customValidators.email()]),
+    phone: new FormControl(null, [Validators.required]),
+    cep: new FormControl(null, [Validators.required]),
+    street: new FormControl({value:'', disabled: true}, [Validators.required]),
+    city: new FormControl({value:'', disabled: true}, [Validators.required]),
+    state: new FormControl({value:'', disabled: true}, [Validators.required]),
+    complement: new FormControl(null),
+    age: new FormControl(null, [Validators.required]),
+    number: new FormControl(null, [Validators.required]),
     id: new FormControl(null),
-    companyId: new FormControl(null),
     enable: new FormControl(true),
   });
 
@@ -28,6 +38,30 @@ export class UserComponent implements OnInit {
   }
   set name(name: string){
     this.formUser.get('name').setValue(name);
+  }
+  get street(): string{
+    return this.formUser.get('street').value;
+  }
+  set street(street: string){
+    this.formUser.get('street').setValue(street);
+  }
+  get cep(): string{
+    return this.formUser.get('cep').value;
+  }
+  set cep(cep: string){
+    this.formUser.get('cep').setValue(cep);
+  }
+  get city(): string{
+    return this.formUser.get('city').value;
+  }
+  set city(city: string){
+    this.formUser.get('city').setValue(city);
+  }
+  get state(): string{
+    return this.formUser.get('state').value;
+  }
+  set state(state: string){
+    this.formUser.get('state').setValue(state);
   }
 
   get email(): string{
@@ -50,12 +84,6 @@ export class UserComponent implements OnInit {
   set enable(enable: boolean){
     this.formUser.get('enable').setValue(enable);
   }
-  get companyId(): number{
-    return this.formUser.get('companyId').value;
-  }
-  set companyId(companyId: number){
-    this.formUser.get('companyId').setValue(companyId);
-  }
 
 
   loadUser(user: any): void{
@@ -69,29 +97,22 @@ export class UserComponent implements OnInit {
     private userService: UserService,
     private ativatedRoute: ActivatedRoute,
     private customValidators: CustomValidatorsService,
-    private validateService: ValidateService
+    private validateService: ValidateService,
+    private correioService: CorreioService
   ) {}
 
   ngOnInit(): void {
     this.userId = parseInt(this.ativatedRoute.snapshot.paramMap.get('id'), 10);
-    this.companyUrlId = parseInt(this.ativatedRoute.snapshot.paramMap.get('companyId'), 10);
 
     if(!!this.userId){
       this.userService.getUser(this.userId).subscribe((data: any) => {
         this.loadUser(data);
-
-        this.userService.getLoggedUser().subscribe((user: any) => {
-          if(user.id === this.id){
-            this.formUser.get('enable').disable();
-          }
-        });
       });
     }
   }
 
   upsert(): void{
     if (this.validateService.validateForm(this.formUser)){
-      this.companyId = this.companyUrlId ? this.companyUrlId : 0;
       this.userService.upsert(this.formUser.getRawValue());
     }
   }
@@ -100,4 +121,13 @@ export class UserComponent implements OnInit {
     this.userService.cancel();
   }
 
+  searchCEPAdress() {
+    return this.correioService.getCEP(this.cep).subscribe(data => {
+      console.log(data)
+      this.street = data.logradouro === '' ? data.localidade : data.logradouro;
+      this.city = data.localidade;
+      this.state = data.uf;
+    }, error => {
+    });
+  }
 }

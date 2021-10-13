@@ -15,12 +15,21 @@ export class User {
    
    @Column()
    email: string;
+
+   @Column({default: ''})
+   CEP: string;
    
    @Column()
    address: string;
    
+   @Column({default: 0})
+   number: number;
+   
    @Column()
    city: string;
+   
+   @Column({default: ''})
+   complement: string;
    
    @Column()
    state: string;

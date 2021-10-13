@@ -16,3 +16,17 @@
 .active-switch {
   margin-top: 32px;
 }
+
+.button-div {
+  max-width: 400px;
+  display: flex;
+}
+
+@media screen and (min-width: 769px) {
+  .user-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+  }
+
+}

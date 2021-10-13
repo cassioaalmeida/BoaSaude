@@ -15,11 +15,11 @@ export class UserApiService {
   }
 
   getUser(id: number): any {
-    return this.http.get(`${environment.urlApi}/GetUserById/${id}`);
+    return this.http.get(`${environment.urlApi}/User/${id}`);
   }
 
   upsert(user: any): any{
-    return this.http.post(`${environment.urlApi}/SaveUser`, user);
+    return this.http.post(`${environment.urlApi}/User`, user);
   }
 
   getUserListPaged(pageNumber: number, pageSize: number): any {
