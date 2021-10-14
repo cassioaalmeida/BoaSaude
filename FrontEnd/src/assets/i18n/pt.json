@@ -1,6 +1,11 @@
 {
     "enum": { 
-        "Dolar": "Dólar"
+        "Dolar": "Dólar",
+        "profiles": {
+          "1": "Admin",
+          "2": "Associate",
+          "3": "Provider"
+        }
     },
     "message": {
         "success-ticket-created-logged": "Sucesso"

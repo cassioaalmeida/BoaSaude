@@ -37,8 +37,16 @@ export class UserService {
     }
   }
 
-  public async upsert(user:User) {
+  public async upsert(user:User, password:string) {
     try {
+      let userLogin: any
+      userLogin = (await this.userRepository.createUserLogin(user, password)).data
+
+      user.userLoginId = Number(userLogin.id)
+      if (!user.id) {
+        user.createdAt = userLogin.createdAt
+      }
+      user.updatedAt = userLogin.updatedAt
       return await this.userRepository.upsert(user)
     } catch(e) {
       throw e

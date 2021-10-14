@@ -60,7 +60,7 @@ export class UserController {
 
   public saveUser = async (req: express.Request, res: express.Response, next: any) => {
     try {
-      const result = await this.userService.upsert(req.body)
+      const result = await this.userService.upsert(req.body, req.body.password)
 
       res.status(200).send(result)
       next()

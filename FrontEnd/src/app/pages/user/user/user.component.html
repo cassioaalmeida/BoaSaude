@@ -25,14 +25,14 @@
 
         <mat-form-field appearance="fill" class="display-block">
           <mat-label>CEP</mat-label>
-          <input matInput [textMask]="{mask: maskCep}" type="text" id="cep" formControlName="cep" (change)="searchCEPAdress()">
-          <app-input-error-message [control]="formUser.get('cep')"></app-input-error-message>
+          <input matInput [textMask]="{mask: maskCEP}" type="text" id="CEP" formControlName="CEP" (change)="searchCEPAdress()">
+          <app-input-error-message [control]="formUser.get('CEP')"></app-input-error-message>
       </mat-form-field>
       
         <mat-form-field appearance="fill" class="display-block">
             <mat-label>Endereço</mat-label>
-            <input matInput type="text" id="street" formControlName="street">
-            <app-input-error-message [control]="formUser.get('street')"></app-input-error-message>
+            <input matInput type="text" id="address" formControlName="address">
+            <app-input-error-message [control]="formUser.get('address')"></app-input-error-message>
         </mat-form-field>
       
         <mat-form-field appearance="fill" class="display-block">
@@ -64,8 +64,24 @@
             <input matInput type="number" id="age" formControlName="age">
             <app-input-error-message [control]="formUser.get('age')"></app-input-error-message>
         </mat-form-field>
+        
+        <mat-form-field  appearance="fill" class="display-block">
+          <mat-label>Perfil</mat-label>
+          <mat-select id="type" formControlName="type">
+              <mat-option *ngFor="let type of getProfiles()" [value]="type">
+                  {{ 'enum.profiles.' + type | translate }}
+              </mat-option>
+          </mat-select>
+          <app-input-error-message [control]="formUser.get('type')"></app-input-error-message>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="display-block">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" id="password" formControlName="password">
+            <app-input-error-message [control]="formUser.get('password')"></app-input-error-message>
+        </mat-form-field>
     
-        <mat-slide-toggle id="enable" class="display-block active-switch" formControlName="enable">Ativo</mat-slide-toggle>
+        <mat-slide-toggle id="enable" class="display-block active-switch" formControlName="active">Ativo</mat-slide-toggle>
         
       
       </form>

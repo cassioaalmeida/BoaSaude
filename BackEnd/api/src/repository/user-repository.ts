@@ -2,6 +2,8 @@ import { User } from "../entity/User"
 import { Connection, Repository } from "typeorm";
 import { Service } from "typedi";
 import { InjectConnection, InjectRepository } from "typeorm-typedi-extensions";
+import axios from 'axios'
+import { UserType } from "../enum/UserType";
 
 @Service()
 export class UserRepository {
@@ -30,6 +32,28 @@ export class UserRepository {
   }
   public async getAllCount() {
     return this.repository.count()
+  }
+
+  public async createUserLogin(user:User, password:string) {
+    let {
+      email,
+      active,
+      userLoginId
+    } = user
+
+    const data = {
+      id: userLoginId ?? 0,
+      email,
+      active,
+      password,
+      role: {name:UserType[user.type]}
+    }
+
+    return axios({
+      method: 'post',
+      url: 'https://boa-saude-identity.azurewebsites.net/api/user',
+      data
+    });
   }
 
 }

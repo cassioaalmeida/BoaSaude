@@ -27,10 +27,10 @@ export class MenuService {
       } else{
         result.push(
         {
-            "name": "logout",
+            "name": "users",
             "level": 0,
-            "route": "logout",
-            "icon_Class": "logout"
+            "route": "user-list",
+            "icon_Class": "people"
         })
       }
 
