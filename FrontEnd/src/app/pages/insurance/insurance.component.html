@@ -1,0 +1,59 @@
+<div class="insurance-container">
+  <div class="insurance-1">
+    <p class="h4-headline--bold">Enfermaria</p>
+    <form [formGroup]="form1" class="">
+      <div *ngFor='let x of counter(9) ;let i = index'>
+          <mat-form-field appearance="fill" class="display-block">
+              <mat-label>De {{(i)*10}} até {{(i+1)*10}}</mat-label>
+              <input matInput [textMask]="{mask: numberMaskPrice}" type="text"  [id]="'value'+ (i+1)" [formControlName]="'value'+ (i+1)">
+              <span matPrefix>R$&nbsp;</span>
+              <app-input-error-message [control]="form1.get('value'+ (i+1))"></app-input-error-message>
+          </mat-form-field>
+      </div>
+      <mat-form-field appearance="fill" class="display-block">
+          <mat-label>A partir de 90</mat-label>
+          <input matInput [textMask]="{mask: numberMaskPrice}" type="text"  [id]="'value10'" [formControlName]="'value10'">
+          <span matPrefix>R$&nbsp;</span>
+          <app-input-error-message [control]="form1.get('value10')"></app-input-error-message>
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="insurance-2">
+    <p class="h4-headline--bold">Apartamento</p>
+    <form [formGroup]="form2" class="">
+      <div *ngFor='let x of counter(9) ;let i = index'>
+          <mat-form-field appearance="fill" class="display-block">
+              <mat-label>De {{(i)*10}} até {{(i+1)*10}}</mat-label>
+              <input matInput [textMask]="{mask: numberMaskPrice}" type="text"  [id]="'value'+ (i+1)" [formControlName]="'value'+ (i+1)">
+              <span matPrefix>R$&nbsp;</span>
+              <app-input-error-message [control]="form2.get('value'+ (i+1))"></app-input-error-message>
+          </mat-form-field>
+      </div>
+      <mat-form-field appearance="fill" class="display-block">
+          <mat-label>A partir de 90</mat-label>
+          <input matInput [textMask]="{mask: numberMaskPrice}" type="text"  [id]="'value10'" [formControlName]="'value10'">
+          <span matPrefix>R$&nbsp;</span>
+          <app-input-error-message [control]="form2.get('value10')"></app-input-error-message>
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="insurance-3">
+    <p class="h4-headline--bold">VIP</p>
+    <form [formGroup]="form3" class="">
+      <div *ngFor='let x of counter(9) ;let i = index'>
+          <mat-form-field appearance="fill" class="display-block">
+              <mat-label>De {{(i)*10}} até {{(i+1)*10}}</mat-label>
+              <input matInput [textMask]="{mask: numberMaskPrice}" type="text"  [id]="'value'+ (i+1)" [formControlName]="'value'+ (i+1)">
+              <span matPrefix>R$&nbsp;</span>
+              <app-input-error-message [control]="form3.get('value'+ (i+1))"></app-input-error-message>
+          </mat-form-field>
+      </div>
+      <mat-form-field appearance="fill" class="display-block">
+          <mat-label>A partir de 90</mat-label>
+          <input matInput [textMask]="{mask: numberMaskPrice}" type="text"  [id]="'value10'" [formControlName]="'value10'">
+          <span matPrefix>R$&nbsp;</span>
+          <app-input-error-message [control]="form3.get('value10')"></app-input-error-message>
+      </mat-form-field>
+    </form>
+  </div>
+</div>

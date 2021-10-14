@@ -12,6 +12,7 @@ import { MenuController } from './controllers/menu-controller';
 import * as bodyParser from "body-parser";
 import * as helmet from "helmet";
 import { UserController } from './controllers/user-controller';
+import { InsuranceController } from './controllers/insurance-controller';
 const server = express()
 useContainer(Container);
 createConnection(conf).catch(error => {
@@ -19,8 +20,6 @@ createConnection(conf).catch(error => {
     console.error(error);
   })
   .then (connection => {
-    
-    
     server.use(express.json())
     server.use(cors({
       exposedHeaders: [
@@ -30,9 +29,11 @@ createConnection(conf).catch(error => {
     
     const menuController = Container.get(MenuController);
     const userController = Container.get(UserController);
+    const insuranceController = Container.get(InsuranceController);
         
     server.use('/api', menuController.router)
     server.use('/api', userController.router)
+    server.use('/api', insuranceController.router)
     
   });
 export default server
