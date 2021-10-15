@@ -14,6 +14,9 @@
         "SERVER-ERROR": "Erro interno, contate o administrador do sistema."
     },
     "menu": {
-        "login": "Login"
+      "login": "Login",
+      "users": "Usuários",
+      "insurance": "Preço Planos",
+      "user-insurance": "Atribuir Plano"
     }
 }

@@ -1,0 +1,19 @@
+
+<form [formGroup]="form" class="">
+  <div class="ui-container">
+    <div class="ui-header" (keydown.tab)="search()">
+      <mat-form-field appearance="fill" class="display-block">
+        <mat-label>CPF</mat-label>
+        <input matInput [textMask]="{mask: maskCPF,  guide: false}" type="text" id="document" formControlName="document">
+        <app-input-error-message [control]="form.get('document')"></app-input-error-message>
+      </mat-form-field>
+    </div>
+    <hr>
+    <div class="ui-insurance">
+
+    </div>
+    <div class="ui-simulation">
+
+    </div>
+  </div>
+</form>

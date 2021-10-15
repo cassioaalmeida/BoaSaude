@@ -13,6 +13,9 @@ export class User {
    @Column()
    phone: string;
    
+   @Column({default: ''})
+   document: string;
+   
    @Column()
    email: string;
 

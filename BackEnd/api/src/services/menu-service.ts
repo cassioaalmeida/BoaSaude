@@ -39,6 +39,13 @@ export class MenuService {
             "route": "insurance",
             "icon_Class": "paid"
         })
+        result.push(
+        {
+            "name": "user-insurance",
+            "level": 0,
+            "route": "user-insurance",
+            "icon_Class": "assignment_ind"
+        })
       }
 
       return {code: 201, message: result}

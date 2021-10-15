@@ -16,6 +16,7 @@ export class UserComponent implements OnInit {
 
   maskCEP = [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
   maskPhone = ['(', /\d/, /\d/, ')', ' ' , /\d/, /\d/, /\d/, /\d/, /\d/,'-', /\d/, /\d/, /\d/, /\d/];
+  maskCPF = [/\d/, /\d/, /\d/, '.' , /\d/, /\d/, /\d/, '.' , /\d/, /\d/, /\d/, '-' , /\d/, /\d/];
   userId: number;
   companyUrlId: number;
 
@@ -23,6 +24,7 @@ export class UserComponent implements OnInit {
     name: new FormControl(null, [Validators.required, this.customValidators.noWhitespaceValidator(), Validators.maxLength(200)]),
     email: new FormControl(null, [Validators.required, this.customValidators.noWhitespaceValidator(), Validators.maxLength(200), this.customValidators.email()]),
     phone: new FormControl(null, [Validators.required]),
+    document: new FormControl(null, [Validators.required]),
     CEP: new FormControl(null, [Validators.required]),
     address: new FormControl({value:'', disabled: true}, [Validators.required]),
     city: new FormControl({value:'', disabled: true}, [Validators.required]),
@@ -130,6 +132,12 @@ export class UserComponent implements OnInit {
   set type(type: string){
     this.formUser.get('type').setValue(type);
   }
+  get document(): string{
+    return this.formUser.get('document').value;
+  }
+  set document(document: string){
+    this.formUser.get('document').setValue(document);
+  }
 
 
   loadUser(user: any): void{
@@ -147,7 +155,8 @@ export class UserComponent implements OnInit {
     this.number=     user.number
     this.password=   user.password
     this.userLoginId= user.userLoginId
-    console.log(this.userLoginId)
+    this.document = user.document
+    console.log(user)
     this.type = Object.keys(Profiles).filter(k => k==user.type)[0]
   }
 

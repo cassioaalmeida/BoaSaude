@@ -42,6 +42,7 @@ import { InputErrorMessageComponent } from './shared/input-error-message/input-e
 import { UserComponent } from './pages/user/user/user.component';
 import { UserListComponent } from './pages/user/user-list/user-list.component';
 import { InsuranceComponent } from './pages/insurance/insurance.component';
+import { UserInsuranceComponent } from './pages/user-insurance/user-insurance.component';
 
 registerLocaleData(ptBr);
 
@@ -59,7 +60,8 @@ export function createTranslateLoader(http: HttpClient) {
     InputErrorMessageComponent,
     UserComponent,
     UserListComponent,
-    InsuranceComponent
+    InsuranceComponent,
+    UserInsuranceComponent
   ],
   imports: [
     BrowserModule,

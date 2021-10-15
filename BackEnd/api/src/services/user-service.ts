@@ -20,6 +20,13 @@ export class UserService {
       throw e
     }
   }
+  public async getUserByDocument(document:string) {
+    try {
+      return await this.userRepository.getByDocument(document)
+    } catch(e) {
+      throw e
+    }
+  }
 
   public async getAll(pageSize:number, pageNumber:number) {
     try {

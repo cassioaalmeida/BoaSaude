@@ -22,6 +22,12 @@
             <input matInput [textMask]="{mask: maskPhone,  guide: false}" type="text" id="phone" formControlName="phone">
             <app-input-error-message [control]="formUser.get('phone')"></app-input-error-message>
         </mat-form-field>
+      
+        <mat-form-field appearance="fill" class="display-block">
+            <mat-label>CPF</mat-label>
+            <input matInput [textMask]="{mask: maskCPF,  guide: false}" type="text" id="document" formControlName="document">
+            <app-input-error-message [control]="formUser.get('document')"></app-input-error-message>
+        </mat-form-field>
 
         <mat-form-field appearance="fill" class="display-block">
           <mat-label>CEP</mat-label>

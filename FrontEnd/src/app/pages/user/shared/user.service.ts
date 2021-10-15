@@ -17,12 +17,6 @@ export class UserService {
     private location: Location
   ) { }
 
-  getLoggedUser(){
-    const user = new Subject<any>()
-    this.userApiService.getLoggedUser().subscribe((data: any) => user.next(data));
-    return user.asObservable();
-  }
-
   upsert(user: any): void{
     this.userApiService.upsert(user).subscribe((res) => {
       if(!!user.id) {
@@ -63,6 +57,11 @@ export class UserService {
   getUser(id: number): any {
     const user = new Subject<any>();
     this.userApiService.getUser(id).subscribe((data: any) => user.next(data));
+    return user.asObservable();
+  }
+  getUserByDocument(document: string) {
+    const user = new Subject<any>();
+    this.userApiService.getUserByDocument(document).subscribe((data: any) => user.next(data));
     return user.asObservable();
   }
 

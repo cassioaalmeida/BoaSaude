@@ -23,6 +23,11 @@ export class UserRepository {
   public async getById(id: number) {
     return this.repository.findOne(id)
   }
+  public async getByDocument(document: string) {
+    return this.repository.findOne({
+      document
+    })
+  }
   public async getAll(pageSize:number, pageNumber:number) {
     const offset = (pageNumber-1) * pageSize;
     return this.repository.find({

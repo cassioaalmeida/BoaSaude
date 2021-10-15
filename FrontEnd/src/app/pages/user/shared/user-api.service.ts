@@ -10,16 +10,16 @@ export class UserApiService {
     private http: HttpClient
   ) { }
 
-  getLoggedUser(){
-    return this.http.get(`${environment.urlApi}/GetUserById/0`);
-  }
-
   getUser(id: number): any {
     return this.http.get(`${environment.urlApi}/User/${id}`);
   }
 
   upsert(user: any): any{
     return this.http.post(`${environment.urlApi}/User`, user);
+  }
+
+  getUserByDocument(document: string) {
+    return this.http.get(`${environment.urlApi}/UserByDocument?document=${document}`);
   }
 
   getUserListPaged(pageNumber: number, pageSize: number): any {

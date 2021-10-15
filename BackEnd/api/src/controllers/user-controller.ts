@@ -18,6 +18,7 @@ export class UserController {
   
   private initializeRoutes() {
     this.router.get(this.path, [checkJwt, checkRole(["Admin"])], this.getAll);
+    this.router.get('/UserByDocument', [checkJwt], this.getByDocument);
     this.router.get(this.path + '/:id', [checkJwt, checkRole(["Admin"])], this.getUser);
     this.router.post(this.path, [checkJwt, checkRole(["Admin"])], this.saveUser);
   }
@@ -50,6 +51,17 @@ export class UserController {
   public getUser = async (req: express.Request, res: express.Response, next: any) => {
     try {
       const result = await this.userService.getUser(Number(req.params.id))
+
+      res.status(200).send(result)
+      next()
+    } catch(e) {
+      res.sendStatus(500) && next(e)
+    }
+  }
+
+  public getByDocument = async (req: express.Request, res: express.Response, next: any) => {
+    try {
+      const result = await this.userService.getUserByDocument(req.query.document.toString())
 
       res.status(200).send(result)
       next()
