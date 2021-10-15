@@ -17,7 +17,7 @@ export class InsuranceRepository {
   }
 
   public async update(insurance : Insurance) {
-    return this.repository.update(insurance.id, insurance)
+    return this.repository.save(insurance)
   }
   public async getAll() {
     return this.repository.find()

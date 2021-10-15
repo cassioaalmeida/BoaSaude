@@ -1,7 +1,8 @@
 import { Insurance } from "../entity/Insurance";
 import { Service } from "typedi";
-import { sha512 } from "../utils/utils";
 import { InsuranceRepository } from "../repository/insurance-repository";
+import moment from "moment";
+import 'moment-timezone';
 
 @Service()
 export class InsuranceService {
@@ -23,6 +24,7 @@ export class InsuranceService {
 
   public async update(insurance:Insurance) {
     try {
+      insurance.updatedAt = moment(new Date()).tz('America/Sao_Paulo').toDate()
       return await this.insuranceRepository.update(insurance)
     } catch(e) {
       throw e

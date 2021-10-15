@@ -28,6 +28,7 @@
     "minireset.css": "~0.0.4",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
+    "ng2-currency-mask": "^12.0.3",
     "ngx-material-timepicker": "^5.5.3",
     "ngx-toastr": "^14.1.0",
     "rxjs": "~6.6.0",

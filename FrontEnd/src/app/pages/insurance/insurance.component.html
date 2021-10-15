@@ -17,6 +17,8 @@
           <app-input-error-message [control]="form1.get('value10')"></app-input-error-message>
       </mat-form-field>
     </form>
+    
+    <button mat-raised-button class="button app-button--primary top-32" id="upsert" (click)="upsert1()">Salvar</button> 
   </div>
   <div class="insurance-2">
     <p class="h4-headline--bold">Apartamento</p>
@@ -36,6 +38,7 @@
           <app-input-error-message [control]="form2.get('value10')"></app-input-error-message>
       </mat-form-field>
     </form>
+    <button mat-raised-button class="button app-button--primary top-32" id="upsert" (click)="upsert2()">Salvar</button> 
   </div>
   <div class="insurance-3">
     <p class="h4-headline--bold">VIP</p>
@@ -55,5 +58,6 @@
           <app-input-error-message [control]="form3.get('value10')"></app-input-error-message>
       </mat-form-field>
     </form>
+    <button mat-raised-button class="button app-button--primary top-32" id="upsert" (click)="upsert3()">Salvar</button> 
   </div>
 </div>
