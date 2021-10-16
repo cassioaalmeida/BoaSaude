@@ -1,6 +1,6 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm"; 
-import 'moment-timezone';
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm"; 
 import { InsuranceType } from "../enum/InsuranceType";
+import { UserInsurance } from "./UserInsurance";
 
 @Entity()
 export class Insurance {
@@ -36,4 +36,7 @@ export class Insurance {
 
    @Column()
    updatedAt: Date;
+
+   @OneToMany(() => UserInsurance, userInsurance => userInsurance.insurance)
+   userInsurances: UserInsurance [];
 }
