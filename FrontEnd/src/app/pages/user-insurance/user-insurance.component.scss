@@ -5,5 +5,36 @@
 
 .ui-header {
   max-width: 250px;
+  margin-left: 32px;
+}
+.ui-insurance {
+  max-width: 250px;
+  margin-left: 32px;
+}
+
+.ui-simulation {
+  display: flex;
+  flex-direction: column;
   margin: 32px;
+}
+
+
+.button-div {
+  max-width: 400px;
+  display: flex;
+}
+button {
+  margin-left: 32px;
+}
+
+.page-title {
+  padding: 32px;
+}
+
+@media screen and (min-width: 769px) {
+  .ui-simulation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+  }
 }

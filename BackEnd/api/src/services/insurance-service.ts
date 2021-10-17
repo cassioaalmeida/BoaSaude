@@ -22,6 +22,14 @@ export class InsuranceService {
     }
   }
 
+  public async getById(id: number) {
+    try {
+      return await this.insuranceRepository.getById(id)
+    } catch(e) {
+      throw e
+    }
+  }
+
   public async update(insurance:Insurance) {
     try {
       insurance.updatedAt = moment(new Date()).tz('America/Sao_Paulo').toDate()

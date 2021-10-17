@@ -12,6 +12,9 @@ export class UserInsuranceService {
   ) { }
 
   getUserInsurance(id: number) {
-    return this.http.get(`${environment.urlApi}/Insurance?userId=${id}`);
+    return this.http.get(`${environment.urlApi}/UserInsurance?userId=${id}`);
+  }
+  save(obj) {
+    return this.http.post(`${environment.urlApi}/UserInsurance`, obj);
   }
 }

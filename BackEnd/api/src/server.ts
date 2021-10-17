@@ -13,6 +13,7 @@ import * as bodyParser from "body-parser";
 import * as helmet from "helmet";
 import { UserController } from './controllers/user-controller';
 import { InsuranceController } from './controllers/insurance-controller';
+import { UserInsuranceController } from './controllers/user-insurance-controller';
 const server = express()
 useContainer(Container);
 createConnection(conf).catch(error => {
@@ -30,10 +31,12 @@ createConnection(conf).catch(error => {
     const menuController = Container.get(MenuController);
     const userController = Container.get(UserController);
     const insuranceController = Container.get(InsuranceController);
+    const userInsuranceController = Container.get(UserInsuranceController);
         
     server.use('/api', menuController.router)
     server.use('/api', userController.router)
     server.use('/api', insuranceController.router)
+    server.use('/api', userInsuranceController.router)
     
   });
 export default server

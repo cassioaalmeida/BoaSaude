@@ -1,5 +1,6 @@
 
-<form [formGroup]="form" class="">
+<form [formGroup]="form">
+  <p class="h3-headline--bold page-title"> Atribuição de plano de Saúde ao associado</p>
   <div class="ui-container">
     <div class="ui-header" (keydown.tab)="search()">
       <mat-form-field appearance="fill" class="display-block">
@@ -8,12 +9,41 @@
         <app-input-error-message [control]="form.get('document')"></app-input-error-message>
       </mat-form-field>
     </div>
-    <hr>
     <div class="ui-insurance">
-
+      <mat-form-field  appearance="fill" class="display-block">
+        <mat-label>Plano</mat-label>
+        <mat-select id="type" formControlName="type">
+            <mat-option *ngFor="let type of getInsurance()" [value]="type">
+                {{ 'enum.insurance.' + type | translate }}
+            </mat-option>
+        </mat-select>
+        <app-input-error-message [control]="form.get('type')"></app-input-error-message>
+      </mat-form-field>
     </div>
     <div class="ui-simulation">
+      <mat-form-field appearance="fill" class="display-block">
+        <mat-label>Carteirinha</mat-label>
+        <input matInput type="text" id="cardNumber" formControlName="cardNumber">
+        <app-input-error-message [control]="form.get('cardNumber')"></app-input-error-message>
+      </mat-form-field>
 
+      <mat-form-field  appearance="fill" class="display-block">
+        <mat-label>Status</mat-label>
+        <mat-select id="status" formControlName="status">
+            <mat-option *ngFor="let status of getInsuranceStatus()" [value]="status">
+                {{ 'enum.insuranceStatus.' + status | translate }}
+            </mat-option>
+        </mat-select>
+        <app-input-error-message [control]="form.get('status')"></app-input-error-message>
+      </mat-form-field>
+      
+      <mat-slide-toggle id="enable" class="display-block active-switch top-32" formControlName="hasDental">Plano Dental?</mat-slide-toggle>
+
+      <div class=" top-32"><span class="h4-headline--bold"> Valor total R$</span><span class="h4-headline"> 20,00</span></div>
     </div>
+    <div class="button-div">
+      <button mat-raised-button class="button app-button--basic" id="cancel" (click)="cancel()">Cancelar</button>
+      <button mat-raised-button class="button app-button--primary" id="upsert" (click)="upsert()">Salvar</button>  
+    </div>      
   </div>
 </form>

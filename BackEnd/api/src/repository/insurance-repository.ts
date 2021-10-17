@@ -22,5 +22,10 @@ export class InsuranceRepository {
   public async getAll() {
     return this.repository.find()
   }
+  public async getById(id:number) {
+    return this.repository.findOne({
+      id
+    })
+  }
 }
   
