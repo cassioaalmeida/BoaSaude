@@ -1,3 +1,3 @@
 import server from "./server";
-server.listen(3000);
+server.listen(5001);
 console.log('ok')

@@ -5,7 +5,7 @@ import express from "express"
 import cors from "cors"
 import swaggerUi from 'swagger-ui-express';
 import Container from 'typedi';
-import { createConnection, useContainer } from 'typeorm';
+import { createConnection, useContainer, MigrationExecutor } from 'typeorm';
 import swaggerDocument from './swagger/swagger.json'
 import {conf} from './config/ormconfig'
 import { MenuController } from './controllers/menu-controller';

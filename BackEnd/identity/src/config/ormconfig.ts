@@ -1,7 +1,7 @@
 export const conf: any = {
     name: "default",
     type: "mssql", 
-    host: "boasaude.database.windows.net", 
+    host: "boasaudetcc.database.windows.net", 
     port: 1433, 
     username: "cassio", 
     password: "@Zedumato12", 
@@ -9,7 +9,7 @@ export const conf: any = {
     synchronize: false,
     logging: false,
     entities: [
-        "src/entity/**/*{.ts,.js}",
+        "../entity/**/*{.ts,.js}",
         "entity/**/*{.ts,.js}"
     ],
     migrations: [

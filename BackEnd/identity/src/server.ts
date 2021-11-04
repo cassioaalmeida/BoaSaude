@@ -12,7 +12,27 @@ import swaggerDocument from './swagger/swagger.json'
 import {conf} from './config/ormconfig'
 const server = express()
 useContainer(Container);
-createConnection(conf).catch(error => {
+createConnection({
+  name: "default",
+  type: "mssql", 
+  host: "boasaudetcc.database.windows.net", 
+  port: 1433, 
+  username: "cassio", 
+  password: "@Zedumato12", 
+  database: "boasaudelogin",
+  synchronize: false,
+  logging: false,
+  entities: [
+      "src/entity/*{.ts,.js}",
+      "./entity/*{.ts,.js}"
+  ],
+  migrations: [
+      'src/migration/*.ts',
+  ],
+  cli: {
+      migrationsDir: 'src/migration',
+  },
+}).catch(error => {
     console.error(`Couldn't connect to the database!`);
     console.error(error);
   })

@@ -56,7 +56,7 @@ export class UserRepository {
 
     return axios({
       method: 'post',
-      url: 'https://boa-saude-identity.azurewebsites.net/api/user',
+      url: 'https://boasaude.azurewebsites.net/api/user',
       data
     });
   }

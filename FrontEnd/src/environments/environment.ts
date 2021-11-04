@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   urlApi: 'http://localhost:5000/api',
-  urlIdentityApi: 'https://boa-saude-identity.azurewebsites.net/api',
+  urlIdentityApi: 'https://boasaude.azurewebsites.net/api',
   urlIdentityApiLocal: 'http://localhost:3000/api'
 };
 
