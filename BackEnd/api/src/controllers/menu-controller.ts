@@ -20,7 +20,7 @@ export class MenuController {
 
   public getMenu = async (req: express.Request, res: express.Response, next: any) => {
     try {
-      const result = await this.menuService.getMenu(res.locals.user)
+      const result = await this.menuService.getMenu(res.locals.user, res.locals.jwtPayload.role)
   
       res.status(result.code).send(result.message)
       next()

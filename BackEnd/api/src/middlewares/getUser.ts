@@ -30,6 +30,7 @@ const getUser = function () {
       }
     })
     res.locals.user = user;
+    res.locals.jwtPayload = jwtPayload;
     next();
   };
 };

@@ -1,0 +1,26 @@
+.search-partner-container {
+    padding: 32px;
+}
+.data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+}
+.partner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 32px;
+    border: solid;
+    padding: 16px;
+}
+
+@media screen and (max-width: 768px){
+    .data {
+        display: flex;
+        flex-direction: column;
+    }
+    .partner {
+        display: flex;
+        flex-direction: column;
+    }
+}

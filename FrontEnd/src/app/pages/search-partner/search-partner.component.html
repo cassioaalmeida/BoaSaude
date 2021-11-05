@@ -1,0 +1,17 @@
+
+<div class="search-partner-container">
+    <p class="h2-headline--bold">Prestadores</p>
+    <br>
+    <div class="data">
+        <div *ngFor="let partner of partners">
+            <div class="partner">
+                <p><b>Nome: </b>{{partner.name}}</p>
+                <p><b>Email: </b>{{partner.email}}</p>
+                <p><b>Telefone: </b>{{partner.phone}}</p>
+                <p><b>Tipo </b>{{partner.type}}</p>
+                <p><b>Endereço </b>{{partner.address}}</p>
+                <p><b>Distancia (km) </b>{{partner.distance.toFixed(2)}}</p>
+            </div>
+        </div>
+    </div>
+</div>

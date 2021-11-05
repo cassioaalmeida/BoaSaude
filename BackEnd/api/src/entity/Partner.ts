@@ -58,4 +58,6 @@ export class Partner {
 
    @Column()
    updatedAt: Date;
+
+   distance: number
 }
