@@ -7,14 +7,14 @@
           "3": "Provider"
         },
         "insurance": {
-          "1": "Enfermaria",
-          "2": "Apartamento",
-          "3": "VIP"
+          "Nursery": "Enfermaria",
+          "Apartment": "Apartamento",
+          "VIP": "VIP"
         },
         "insuranceStatus": {
-          "1": "Ativo",
-          "2": "Suspenso",
-          "3": "Inativo"
+          "Active": "Ativo",
+          "Suspended": "Suspenso",
+          "Inactive": "Inativo"
         }
     },
     "message": {

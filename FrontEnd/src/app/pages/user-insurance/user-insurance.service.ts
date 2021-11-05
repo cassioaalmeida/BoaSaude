@@ -14,6 +14,10 @@ export class UserInsuranceService {
   getUserInsurance(id: number) {
     return this.http.get(`${environment.urlApi}/UserInsurance?userId=${id}`);
   }
+  
+  calculate(id: number, insuranceId, hasDental) {
+    return this.http.get(`${environment.urlApi}/UserInsurance/calculate?userId=${id}&insuranceId=${insuranceId}&hasDental=${hasDental}`);
+  }
   save(obj) {
     return this.http.post(`${environment.urlApi}/UserInsurance`, obj);
   }

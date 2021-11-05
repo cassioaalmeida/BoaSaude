@@ -20,9 +20,12 @@ export class UserInsuranceRepository {
   }
   public async getByUserId(id: number) {
     return this.repository.find({
-      user:{
-        id
-      }
+      where:{
+        user:{
+          id
+        }
+      },
+      relations: ["insurance"]
     })
   }
 }

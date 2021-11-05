@@ -24,44 +24,48 @@ export class UserInsuranceService {
   }
 
   public async getByUserId(id:number) {
-    try {
-      return await this.userInsuranceRepository.getByUserId(id)
-    } catch(e) {
-      throw e
-    }
+    return await this.userInsuranceRepository.getByUserId(id)
   }
 
   public async save(userinsurance:any) {
-    try {
-      const user = await this.userService.getUser(userinsurance.userId)
-      const insurance = await this.insuranceService.getById(userinsurance.insuranceId)
-      userinsurance.monthlyCost = await this.getCostByUserAge(user.age, userinsurance.insuranceId)
-      if (userinsurance.hasDental){
-        userinsurance.monthlyCost += userinsurance.monthlyCost*0.15
-      }
-      if(!userinsurance.id) {
-        userinsurance.createdAt = moment(new Date()).tz('America/Sao_Paulo').toDate()
-        userinsurance.cardNumber = (Math.floor(100000000 + Math.random() * 900000000)).toString();
-      }
-      userinsurance.updatedAt = moment(new Date()).tz('America/Sao_Paulo').toDate()
-
-      let obj: UserInsurance
-      obj = {
-        cardNumber: userinsurance.cardNumber,
-        id: userinsurance.id,
-        hasDental: userinsurance.hasDental,
-        montlhyCost: userinsurance.monthlyCost,
-        createdAt: userinsurance.createdAt,
-        updatedAt: userinsurance.updatedAt,
-        user: user,
-        insurance: insurance,
-        status: userinsurance.status
-      }
-
-      return await this.userInsuranceRepository.save(obj)
-    } catch(e) {
-      throw e
+    const user = await this.userService.getUser(userinsurance.userId)
+    const insurance = await this.insuranceService.getById(userinsurance.insuranceId)
+    userinsurance.monthlyCost = await this.getCostByUserAge(user.age, userinsurance.insuranceId)
+    if (userinsurance.hasDental && userinsurance.insuranceId != 3){
+      userinsurance.monthlyCost += userinsurance.monthlyCost*0.15
     }
+    if(!userinsurance.id) {
+      userinsurance.createdAt = moment(new Date()).tz('America/Sao_Paulo').toDate()
+      userinsurance.cardNumber = (Math.floor(100000000 + Math.random() * 900000000)).toString();
+    }
+    userinsurance.updatedAt = moment(new Date()).tz('America/Sao_Paulo').toDate()
+
+    let obj: UserInsurance
+    obj = {
+      cardNumber: userinsurance.cardNumber,
+      id: userinsurance.id,
+      hasDental: userinsurance.hasDental,
+      montlhyCost: userinsurance.monthlyCost,
+      createdAt: userinsurance.createdAt,
+      updatedAt: userinsurance.updatedAt,
+      user: user,
+      insurance: insurance,
+      status: userinsurance.status
+    }
+
+    return await this.userInsuranceRepository.save(obj)
+  }
+  
+  public async calculateCost(userId:number, insuranceId:number, hasDental:number) {
+    const user = await this.userService.getUser(userId)
+    let result = {
+      monthlyCost:0
+    }
+    result.monthlyCost = await this.getCostByUserAge(user.age, insuranceId)
+    if (!!hasDental && insuranceId !== 3){
+      result.monthlyCost += result.monthlyCost*0.15
+    }
+    return result
   }
   public async getCostByUserAge(age: number, insuranceId:number) {
     const insurance = await this.insuranceService.getById(insuranceId)

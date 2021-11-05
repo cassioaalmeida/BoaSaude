@@ -8,43 +8,59 @@ export class User {
    @PrimaryGeneratedColumn()
    id: number;
 
-   @Column()
+   @Column({
+      nullable:true
+   })
    name: string;
    
-   @Column()
+   @Column({
+      nullable:true
+   })
    phone: string;
    
    @Column({default: ''})
    document: string;
    
-   @Column()
+   @Column({
+      nullable:true
+   })
    email: string;
 
    @Column({default: ''})
    CEP: string;
    
-   @Column()
+   @Column({
+      nullable:true
+   })
    address: string;
    
    @Column({default: 0})
    number: number;
    
-   @Column()
+   @Column({
+      nullable:true
+   })
    city: string;
    
    @Column({default: ''})
    complement: string;
    
-   @Column()
+   @Column({
+      nullable:true
+   })
    state: string;
    
-   @Column()
+   @Column({
+      nullable:true
+   })
    age: number;
    
    @Column()
    type: UserType;
    
-   @Column()
+   @Column({
+      nullable:true
+   })
    userLoginId: number;
 
    @Column()

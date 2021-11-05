@@ -1,18 +1,18 @@
 
-<form [formGroup]="form">
+<form [formGroup]="form" class="form-user-insurance">
   <p class="h3-headline--bold page-title"> Atribuição de plano de Saúde ao associado</p>
   <div class="ui-container">
     <div class="ui-header" (keydown.tab)="search()">
       <mat-form-field appearance="fill" class="display-block">
         <mat-label>CPF</mat-label>
-        <input matInput [textMask]="{mask: maskCPF,  guide: false}" type="text" id="document" formControlName="document">
+        <input matInput [textMask]="{mask: maskCPF,  guide: false}" type="text" id="document" formControlName="document" (change)="search()">
         <app-input-error-message [control]="form.get('document')"></app-input-error-message>
       </mat-form-field>
     </div>
     <div class="ui-insurance">
       <mat-form-field  appearance="fill" class="display-block">
         <mat-label>Plano</mat-label>
-        <mat-select id="type" formControlName="type">
+        <mat-select id="type" formControlName="type" (selectionChange)="changeType()">
             <mat-option *ngFor="let type of getInsurance()" [value]="type">
                 {{ 'enum.insurance.' + type | translate }}
             </mat-option>
@@ -37,9 +37,9 @@
         <app-input-error-message [control]="form.get('status')"></app-input-error-message>
       </mat-form-field>
       
-      <mat-slide-toggle id="enable" class="display-block active-switch top-32" formControlName="hasDental">Plano Dental?</mat-slide-toggle>
+      <mat-slide-toggle id="enable" class="display-block active-switch top-32" formControlName="hasDental" (change)="changeType()">Plano Dental?</mat-slide-toggle>
 
-      <div class=" top-32"><span class="h4-headline--bold"> Valor total R$</span><span class="h4-headline"> 20,00</span></div>
+      <div class=" top-32"><span class="h4-headline--bold"> Valor total R$</span><span class="h4-headline"> {{monthlyCost}}</span></div>
     </div>
     <div class="button-div">
       <button mat-raised-button class="button app-button--basic" id="cancel" (click)="cancel()">Cancelar</button>

@@ -8,7 +8,9 @@ export class UserInsurance {
    @PrimaryGeneratedColumn()
    id: number;
 
-   @Column()
+   @Column({
+      nullable:true
+   })
    cardNumber: string;
 
    @Column()

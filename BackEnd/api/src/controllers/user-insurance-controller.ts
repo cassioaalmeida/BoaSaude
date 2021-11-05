@@ -16,15 +16,28 @@ export class UserInsuranceController {
   }
   
   private initializeRoutes() {
-    this.router.get(this.path, [checkJwt], this.getAll);
+    this.router.get(this.path, [checkJwt], this.getByUserId);
+    this.router.get(`${this.path}/calculate`, [checkJwt], this.calculateCost);
     this.router.post(this.path, [checkJwt, checkRole(["Admin"])], this.saveUserInsurance);
   }
 
-  public getAll = async (req: express.Request, res: express.Response, next: any) => {
+  public getByUserId = async (req: express.Request, res: express.Response, next: any) => {
     try {      
-      const result = await this.userInsuranceService.getByUserId(Number(req.query.userid))
+      const result = await this.userInsuranceService.getByUserId(Number(req.query.userId))
 
       res.status(200).send(result)
+      next()
+    } catch(e) {
+      res.sendStatus(500) && next(e)
+    }
+  }
+
+  public calculateCost = async (req: express.Request, res: express.Response, next: any) => {
+    try {      
+      const result = await this.userInsuranceService.calculateCost(Number(req.query.userId), Number(req.query.insuranceId), Number(req.query.hasDental))
+
+      // res.status(200).send(result)
+      res.send(result)
       next()
     } catch(e) {
       res.sendStatus(500) && next(e)
