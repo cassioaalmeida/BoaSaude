@@ -30,10 +30,11 @@ export class UserInsuranceService {
   public async save(userinsurance:any) {
     const user = await this.userService.getUser(userinsurance.userId)
     const insurance = await this.insuranceService.getById(userinsurance.insuranceId)
-    userinsurance.monthlyCost = await this.getCostByUserAge(user.age, userinsurance.insuranceId)
+    userinsurance.monthlyCost = Number(await this.getCostByUserAge(user.age, userinsurance.insuranceId))
     if (userinsurance.hasDental && userinsurance.insuranceId != 3){
       userinsurance.monthlyCost += userinsurance.monthlyCost*0.15
     }
+    userinsurance.monthlyCost = Number((userinsurance.monthlyCost*1).toFixed(2))
     if(!userinsurance.id) {
       userinsurance.createdAt = moment(new Date()).tz('America/Sao_Paulo').toDate()
       userinsurance.cardNumber = (Math.floor(100000000 + Math.random() * 900000000)).toString();
@@ -61,10 +62,11 @@ export class UserInsuranceService {
     let result = {
       monthlyCost:0
     }
-    result.monthlyCost = await this.getCostByUserAge(user.age, insuranceId)
+    result.monthlyCost = Number(await this.getCostByUserAge(user.age, insuranceId))
     if (!!hasDental && insuranceId !== 3){
       result.monthlyCost += result.monthlyCost*0.15
     }
+    result.monthlyCost = Number((result.monthlyCost*1).toFixed(2))
     return result
   }
   public async getCostByUserAge(age: number, insuranceId:number) {

@@ -1,13 +1,16 @@
 export = {
     name: "default",
-    type: "mssql", 
-    host: "boasaudetcc.database.windows.net", 
-    port: 1433, 
-    username: "cassio", 
-    password: "@Zedumato12", 
+    type: "postgres", 
+    host: "localhost", 
+    port: 5432, 
+    username: "postgres", 
+    password: "1234", 
     database: "boasaude",
     synchronize: false,
     logging: false,
+    options: {
+      trustServerCertificate: true
+    },
     entities: [
         'src/**/**/*{.ts,.js}',
         'dist/**/**/*{.ts,.js}'

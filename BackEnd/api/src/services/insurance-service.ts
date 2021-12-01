@@ -32,6 +32,7 @@ export class InsuranceService {
 
   public async update(insurance:Insurance) {
     try {
+      insurance.createdAt = moment(new Date()).tz('America/Sao_Paulo').toDate()
       insurance.updatedAt = moment(new Date()).tz('America/Sao_Paulo').toDate()
       return await this.insuranceRepository.update(insurance)
     } catch(e) {

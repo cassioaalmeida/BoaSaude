@@ -26,6 +26,7 @@
       "moment": "^2.29.1",
       "moment-timezone": "^0.5.33",
       "mssql": "^7.2.1",
+      "pg": "^8.7.1",
       "reflect-metadata": "^0.1.10",
       "swagger-ui-express": "^4.1.6",
       "typedi": "^0.8.0",

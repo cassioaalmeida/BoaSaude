@@ -14,11 +14,11 @@ const server = express()
 useContainer(Container);
 createConnection({
   name: "default",
-  type: "mssql", 
-  host: "boasaudetcc.database.windows.net", 
-  port: 1433, 
-  username: "cassio", 
-  password: "@Zedumato12", 
+  type: "postgres", 
+  host: "localhost", 
+  port: 5432, 
+  username: "postgres", 
+  password: "1234", 
   database: "boasaudelogin",
   synchronize: false,
   logging: false,

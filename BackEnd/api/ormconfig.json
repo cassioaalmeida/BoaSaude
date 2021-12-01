@@ -1,13 +1,16 @@
 {
   "name": "default",
-  "type": "mssql", 
-  "host": "boasaudetcc.database.windows.net", 
+  "type": "postgres", 
+  "host": "localhost", 
   "port": 1433, 
-  "username": "cassio", 
-  "password": "@Zedumato12", 
+  "username": "postgres", 
+  "password": "1234", 
   "database": "boasaude",
   "synchronize": false,
   "logging": false,
+  "options": {
+    "encrypt": false
+  },
    "entities": [
       "./entity/**/*{.ts,.js}"
    ],
