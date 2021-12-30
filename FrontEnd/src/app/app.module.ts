@@ -44,6 +44,7 @@ import { UserListComponent } from './pages/user/user-list/user-list.component';
 import { InsuranceComponent } from './pages/insurance/insurance.component';
 import { UserInsuranceComponent } from './pages/user-insurance/user-insurance.component';
 import { SearchPartnerComponent } from './pages/search-partner/search-partner.component';
+import { AttendanceComponent } from './pages/attendance/attendance.component';
 
 registerLocaleData(ptBr);
 
@@ -63,7 +64,8 @@ export function createTranslateLoader(http: HttpClient) {
     UserListComponent,
     InsuranceComponent,
     UserInsuranceComponent,
-    SearchPartnerComponent
+    SearchPartnerComponent,
+    AttendanceComponent
   ],
   imports: [
     BrowserModule,

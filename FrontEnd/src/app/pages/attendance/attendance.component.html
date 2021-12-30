@@ -1,0 +1,41 @@
+
+<form [formGroup]="form" class="form-attendance">
+  <p class="h3-headline--bold page-title">Atendimento</p>
+  <div class="attendance-container">
+    <div class="attendance-header" (keydown.tab)="search()">
+      <mat-form-field appearance="fill" class="display-block"> 
+        <mat-label>CPF</mat-label>
+        <input matInput [textMask]="{mask: maskCPF,  guide: false}" type="text" id="userDocument" formControlName="userDocument" (change)="search()">
+        <app-input-error-message [control]="form.get('userDocument')"></app-input-error-message>
+      </mat-form-field>
+    </div>
+    <div class="attendance">
+      <mat-form-field  appearance="fill" class="display-block">
+        <mat-label>Plano</mat-label>
+        <mat-select id="type" formControlName="type">
+            <mat-option *ngFor="let type of getInsurance()" [value]="type">
+                {{ 'enum.insurance.' + type | translate }}
+            </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill" class="display-block">
+        <mat-label>Carteirinha</mat-label>
+        <input matInput type="text" id="cardNumber" formControlName="cardNumber">
+      </mat-form-field>
+
+      <mat-form-field  appearance="fill" class="display-block">
+        <mat-label>Status</mat-label>
+        <mat-select id="status" formControlName="status">
+            <mat-option *ngFor="let status of getInsuranceStatus()" [value]="status">
+                {{ 'enum.insuranceStatus.' + status | translate }}
+            </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="button-div">
+      <button mat-raised-button class="button app-button--basic" id="cancel" (click)="cancel()">Cancelar</button>
+      <button mat-raised-button class="button app-button--primary" id="upsert" (click)="upsert()">Salvar</button>  
+    </div>      
+  </div>
+</form>

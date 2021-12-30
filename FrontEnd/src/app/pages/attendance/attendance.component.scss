@@ -1,0 +1,39 @@
+.attendance-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.attendance-header {
+  max-width: 250px;
+  margin-left: 32px;
+}
+
+.attendance {
+  display: flex;
+  flex-direction: column;
+  margin: 32px;
+}
+
+
+.button-div {
+  max-width: 400px;
+  display: flex;
+}
+button {
+  margin-left: 32px;
+}
+
+.page-title {
+  padding: 32px;
+}
+.form-attendance {
+  padding-bottom: 32px;
+}
+
+@media screen and (min-width: 769px) {
+  .attendance {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+  }
+}

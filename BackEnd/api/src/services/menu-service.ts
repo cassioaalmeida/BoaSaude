@@ -47,6 +47,13 @@ export class MenuService {
               "route": "user-insurance",
               "icon_Class": "assignment_ind"
           })
+          result.push(
+          {
+              "name": "attendance",
+              "level": 0,
+              "route": "attendance",
+              "icon_Class": "local_hospital"
+          })
         }
         if (role == 'Associate'){
           result.push(
