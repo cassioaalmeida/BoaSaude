@@ -18,7 +18,9 @@
         }
     },
     "message": {
-        "success-ticket-created-logged": "Sucesso"
+      "success-ticket-created-logged": "Sucesso",
+      "success": "Sucesso",
+      "required-fill": "Preenchimento Inválido"
     },
     "exception": {
         "SERVER-ERROR": "Erro interno, contate o administrador do sistema."

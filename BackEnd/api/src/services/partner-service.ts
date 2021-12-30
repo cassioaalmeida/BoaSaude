@@ -21,6 +21,10 @@ export class PartnerService {
 
     return partners.sort((a,b) => (a.distance > b.distance) ? 1: -1)
   }
+  public async getAllSelect() {
+    const partners = await this.partnerRepository.getAll()
+    return partners.sort((a, b) => a.name.localeCompare(b.name))
+  }
 
   public haversine(lat1:number, lon1:number, lat2:number, lon2:number) 
   {

@@ -9,6 +9,12 @@ import { attendanceRouter } from "./routes/attendance.router";
 const server = express()
 connectToDatabase()
     .then(() => {
+        server.use(express.json())
+        server.use(cors({
+          exposedHeaders: [
+            "*"
+          ]
+        }))
         server.use("/attendance", attendanceRouter);
     })
     .catch((error: Error) => {

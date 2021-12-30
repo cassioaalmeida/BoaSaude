@@ -14,4 +14,8 @@ export class SearchPartnerService {
   getPartners(lat, lng) {
     return this.http.get(`${environment.urlApi}/partner/search?lat=${lat}&lng=${lng}`);
   }
+
+  getAllPartners() {
+    return this.http.get(`${environment.urlApi}/partner`);
+  }
 }

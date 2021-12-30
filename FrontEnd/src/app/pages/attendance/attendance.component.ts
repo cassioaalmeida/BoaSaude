@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MessageService } from 'src/app/shared/services/message.service';
 import { UtilsService } from 'src/app/_core/Utils/utils.service';
+import { ValidateService } from 'src/app/_core/Utils/validate.service';
 import { InsuranceStatus } from 'src/app/_enum/insurance-status.enum';
 import { InsuranceType } from 'src/app/_enum/InsuranceType';
 import { InsuranceService } from '../insurance/insurance.service';
+import { SearchPartnerService } from '../search-partner/search-partner.service';
 import { UserInsuranceService } from '../user-insurance/user-insurance.service';
 import { UserService } from '../user/shared/user.service';
 import { AttendanceService } from './attendance.service';
@@ -21,10 +24,12 @@ export class AttendanceComponent implements OnInit {
   monthlyCost
   partnerData;
   user;
+  partners;
   
   maskCPF = [/\d/, /\d/, /\d/, '.' , /\d/, /\d/, /\d/, '.' , /\d/, /\d/, /\d/, '-' , /\d/, /\d/];
   form = new FormGroup({
     userDocument: new FormControl(null, [Validators.required]),
+    partnerId: new FormControl(null, [Validators.required]),
     userName: new FormControl(null),
     userAge: new FormControl(null),
     userId: new FormControl(null),
@@ -35,6 +40,12 @@ export class AttendanceComponent implements OnInit {
     userIsuranceId: new FormControl(null)
   });
   
+  get partnerId(): string{
+    return this.form.get('partnerId').value;
+  }
+  set partnerId(partnerId: string){
+    this.form.get('partnerId').setValue(partnerId);
+  }
   get userDocument(): string{
     return this.form.get('userDocument').value;
   }
@@ -92,17 +103,22 @@ export class AttendanceComponent implements OnInit {
     private userService: UserService,
     private insuranceService: InsuranceService,
     private utilsService: UtilsService,
-    private attendanceService: AttendanceService
+    private attendanceService: AttendanceService,
+    private searchPartnerService: SearchPartnerService,
+    private validateService: ValidateService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
+    this.searchPartnerService.getAllPartners().subscribe((data: any) => {
+      this.partners = data
+    });
   }
 
 
   search() {
     this.showDIv = false
     this.userService.getUserByDocument(this.userDocument).subscribe((user: any) => {
-      console.log(user)
       this.resetForm()
       if (!!user){
         this.user = user
@@ -168,23 +184,27 @@ export class AttendanceComponent implements OnInit {
     this.utilsService.reloadComponent()
   }
   upsert() {
-    let obj = {
-      userId: this.userid,
-      userName: this.userName,
-      userDocument: this.userDocument,
-      userAge: this.userAge,
-      userInsuranceCardNumber: this.cardNumber,
-      userIsuranceId: this.userIsuranceId,
-      partnerId: this.partnerData?.id,
-      partnerName: this.partnerData?.partnerName,
-      partnerlongitude: this.partnerData?.partnerLongitude,
-      partnerLatitude: this.partnerData?.partnerLatitude,
-      partnerType: this.partnerData?.partnerType
+    if (this.validateService.validateForm(this.form)){
+      const partner = this.partners.find(x=> x.id === this.partnerId)
+      let obj = {
+        userId: this.userid,
+        userName: this.userName,
+        userDocument: this.userDocument,
+        userAge: this.userAge,
+        userInsuranceCardNumber: this.cardNumber,
+        userIsuranceId: this.userIsuranceId,
+        partnerId: partner.id,
+        partnerName: partner.name,
+        partnerlongitude: partner.longitude,
+        partnerLatitude: partner.latidute,
+        partnerType: partner.type
+      }
+      console.log(obj)
+      this.attendanceService.save(obj).subscribe((data: any) => {
+        this.messageService.success('message.success')
+        this.resetForm()
+      });
     }
-    console.log(obj)
-    // this.userInsuranceService.save(obj).subscribe((data: any) => {
-    //   this.loadData(data);
-    // });
   }
   getInsurance(): any {
     return Object.keys(InsuranceType)

@@ -1,7 +1,8 @@
 import { ObjectId } from "mongodb";
 
-export default class Game {
-  constructor(createdAt: Date,
+export default class Attendance {
+  constructor(
+    createdAt: Date,
     partnerId: String,
     partnerName: String,
     partnerlongitude: String,

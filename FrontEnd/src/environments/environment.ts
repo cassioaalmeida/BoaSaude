@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   urlApi: 'http://localhost:5000/api',
   urlIdentityApi: 'http://localhost:5001/api',
+  urlAttendanceApi: 'http://localhost:5002',
   urlIdentityApiLocal: 'http://localhost:5000/api'
 };
 
