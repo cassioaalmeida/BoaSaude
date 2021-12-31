@@ -203,6 +203,8 @@ export class AttendanceComponent implements OnInit {
       this.attendanceService.save(obj).subscribe((data: any) => {
         this.messageService.success('message.success')
         this.resetForm()
+        this.userDocument = ''
+        this.partnerId = null
       });
     }
   }
